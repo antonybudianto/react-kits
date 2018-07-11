@@ -1,17 +1,19 @@
 #!/usr/bin/env node
 
-// require('babel-register')({
-//   presets: ['env', 'stage-3']
-// });
-
 const yargs = require('yargs');
 yargs
   .command(
-    'init',
+    'init [name]',
     'Initialize new project',
-    () => {},
+    y => {
+      return y.option('name', {
+        alias: 'n',
+        describe: 'Project name',
+        demandOption: true
+      });
+    },
     argv => {
-      //   require('./cli/init');
+      require('./cli/init')(argv.name);
     }
   )
   .command(
