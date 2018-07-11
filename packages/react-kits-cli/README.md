@@ -6,7 +6,7 @@ The CLI for starting dev server, bundling, and common utilities.
 
 ## Install
 ```sh
-yarn add -D react-kits-cli
+yarn add -D react-kits
 ```
 
 ## Commands
