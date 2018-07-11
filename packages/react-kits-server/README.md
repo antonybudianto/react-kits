@@ -20,10 +20,11 @@ const app = createReactServer({
   onRender: () => <CoreLayout />
 })
 
-# createStore is a function that must return Redux store
-# getInitialData is a function that must return Promise
-# onRender is a function that must return React element
-
+/**
+ * `createStore` is a function that must return Redux store.
+ * `getInitialData` is a function that must return Promise.
+ * `onRender` is a function that must return React element.
+ **/
 ```
 
 ### License
