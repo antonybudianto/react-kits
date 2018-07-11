@@ -1,7 +1,8 @@
 {
   "lerna": "2.11.0",
   "packages": [
-    "packages/*"
+    "packages/*",
+    "packages/react-kits-cli/template"
   ],
   "version": "0.2.0"
 }
