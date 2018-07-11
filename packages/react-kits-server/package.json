@@ -1,6 +1,6 @@
 {
   "name": "react-kits-server",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "Express server for react-kits",
   "source": "src/index.js",
   "main": "lib/index.js",
@@ -21,10 +21,10 @@
   "homepage": "https://github.com/antonybudianto/react-kits-server#readme",
   "peerDependencies": {
     "react": "*",
-    "redux": "*",
     "react-dom": "*",
+    "react-kits": "*",
     "react-router-dom": "*",
-    "react-kits": "*"
+    "redux": "*"
   },
   "dependencies": {
     "express": "^4.16.3",
@@ -37,9 +37,9 @@
   "devDependencies": {
     "microbundle": "^0.5.1",
     "react": "*",
-    "redux": "*",
     "react-dom": "*",
+    "react-kits": "^0.1.0",
     "react-router-dom": "*",
-    "react-kits": "*"
+    "redux": "*"
   }
 }
