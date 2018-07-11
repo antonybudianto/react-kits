@@ -2,7 +2,12 @@
 
 Express server for server-side rendering with data prefetching.
 
-### API
+## Install
+```sh
+yarn add react-kits-server
+```
+
+## API
 ```js
 import { createReactServer } from 'react-kits-server'
 
