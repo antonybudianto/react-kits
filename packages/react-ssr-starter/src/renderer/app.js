@@ -16,8 +16,7 @@ const app = createReactServer({
   customMiddleware: ins => {
     if (__DEV__) {
       const proxy = require('http-proxy-middleware')
-      const backendUrl =
-        process.env.APP_BACKEND_URL || 'https://staging.tokopedia.com'
+      const backendUrl = process.env.APP_BACKEND_URL || 'https://api.myapp.com'
       console.log('APP_BACKEND_URL = ' + backendUrl)
 
       ins.use(
