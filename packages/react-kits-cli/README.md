@@ -2,7 +2,14 @@
 
 The CLI for starting dev server, bundling, and common utilities.
 
-# Commands
+> Should be installed as `devDependencies`
+
+## Install
+```sh
+yarn add -D react-kits-cli
+```
+
+## Commands
 ```sh
 react-kits start
 
