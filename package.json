@@ -1,0 +1,22 @@
+{
+  "name": "react-kits",
+  "description": "React Kits monorepo",
+  "author": "Antony Budianto",
+  "license": "MIT",
+	"scripts": {
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean",
+    "ls": "lerna ls",
+    "build": "lerna run build",
+    "prerelease": "npm run build",
+    "release": "lerna publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonybudianto/react-kits.git"
+  },
+  "homepage": "https://github.com/antonybudianto/react-kits#readme",
+	"devDependencies": {
+		"lerna": "^2.11.0"
+	}
+}

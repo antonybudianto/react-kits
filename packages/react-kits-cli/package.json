@@ -1,0 +1,62 @@
+{
+  "name": "react-kits",
+  "version": "0.0.5",
+  "description": "React dev kits",
+  "main": "src/index.js",
+  "bin": {
+    "react-kits": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "lib"
+  ],
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonybudianto/react-kits.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/antonybudianto/react-kits/issues"
+  },
+  "homepage": "https://github.com/antonybudianto/react-kits#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-dynamic-import-node": "^2.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-0": "6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chalk": "^2.4.1",
+    "css-loader": "^1.0.0",
+    "del": "^3.0.0",
+    "file-loader": "^1.1.11",
+    "loadable-components": "^2.2.2",
+    "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.9.2",
+    "null-loader": "^0.1.1",
+    "optimize-css-assets-webpack-plugin": "^4.0.3",
+    "react-hot-loader": "^4.3.3",
+    "sass-loader": "^7.0.3",
+    "start-server-webpack-plugin": "^3.0.0-rc3",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.15.1",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-middleware": "^3.1.3",
+    "webpack-hot-middleware": "^2.22.2",
+    "webpack-manifest-plugin": "^2.0.3",
+    "webpack-merge": "^4.1.3",
+    "webpack-node-externals": "^1.7.2",
+    "yargs": "^12.0.1"
+  }
+}

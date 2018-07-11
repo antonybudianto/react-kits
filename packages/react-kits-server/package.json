@@ -1,0 +1,45 @@
+{
+  "name": "react-kits-server",
+  "version": "0.0.8",
+  "description": "Express server for react-kits",
+  "source": "src/index.js",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "microbundle --jsx=React.createElement",
+    "watch": "microbundle watch --jsx=React.createElement --compress=false",
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonybudianto/react-kits-server.git"
+  },
+  "author": "Antony",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/antonybudianto/react-kits-server/issues"
+  },
+  "homepage": "https://github.com/antonybudianto/react-kits-server#readme",
+  "peerDependencies": {
+    "react": "*",
+    "redux": "*",
+    "react-dom": "*",
+    "react-router-dom": "*",
+    "react-kits": "*"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "loadable-components": "^2.2.2",
+    "morgan": "^1.9.0",
+    "react-helmet": "^5.2.0",
+    "react-redux": "^5.0.7",
+    "serialize-javascript": "^1.5.0"
+  },
+  "devDependencies": {
+    "microbundle": "^0.5.1",
+    "react": "*",
+    "redux": "*",
+    "react-dom": "*",
+    "react-router-dom": "*",
+    "react-kits": "*"
+  }
+}
