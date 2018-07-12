@@ -1,8 +1,9 @@
 # react-kits
 
-## Intro
-
 This is my opinionated Fullstack React kits, featuring SSR, Lazy-loading, Prefetching, Full HMR.
+
+## Requirement
+- Node >= 8.6
 
 ## Structure
 
@@ -17,16 +18,20 @@ The project consists of following packages:
 They're managed by [Lerna](https://github.com/lerna/lerna) so you don't need to `npm link` manually :D
 
 ## Getting started
+```sh
+npx react-kits init myapp
+```
 
+## Contributing
 ```sh
 # First, clone the repo
 # then install
 yarn
 
-# bootstrap packages
+# Bootstrap packages
 yarn bootstrap
 
-# ready to develop locally!
+# Ready to develop locally!
 ```
 
 ## Release packages
@@ -34,7 +39,7 @@ yarn bootstrap
 ```sh
 npm run release
 
-# this will run `build` script for each package before release
+# This will run `build` script for each package before release
 ```
 
 ## License
