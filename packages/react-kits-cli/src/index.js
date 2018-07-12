@@ -3,15 +3,9 @@
 const yargs = require('yargs');
 yargs
   .command(
-    'init [name]',
+    'init <name>',
     'Initialize new project',
-    y => {
-      return y.option('name', {
-        alias: 'n',
-        describe: 'Project name',
-        demandOption: true
-      });
-    },
+    () => {},
     argv => {
       require('./cli/init')(argv.name);
     }
