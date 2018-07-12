@@ -5,9 +5,10 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 
-const { resolveDir } = require('../util/path');
+const { resolveCwd, resolveDir } = require('../util/path');
 const baseConfig = require('./webpack.base.config');
 const project = require('../config/project.config');
+const kitConfig = require(resolveCwd('react-kits.config'))(project);
 
 const devMode = project.globals.__DEV__;
 
@@ -84,6 +85,20 @@ const config = {
   }
 };
 
-let finalConfig = merge(baseConfig, config);
+/**
+ * Allow webpack overrides
+ */
+let custom = {};
+if (kitConfig.clientWebpack) {
+  const webpackConfig = kitConfig.clientWebpack(config);
+  if (!webpackConfig) {
+    log('`clientWebpack` field should return config.');
+  } else {
+    log('`clientWebpack` modify is applied.');
+    custom = webpackConfig;
+  }
+}
+
+let finalConfig = merge(baseConfig, config, custom);
 
 module.exports = finalConfig;

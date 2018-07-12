@@ -4,8 +4,9 @@ const merge = require('webpack-merge');
 const StartServerPlugin = require('start-server-webpack-plugin');
 
 const baseConfig = require('./webpack.base.config');
-const { resolveDir } = require('../util/path');
+const { resolveCwd, resolveDir } = require('../util/path');
 const project = require('../config/project.config');
+const kitConfig = require(resolveCwd('react-kits.config'))(project);
 
 let config = {
   target: 'node',
@@ -53,6 +54,20 @@ if (project.globals.__DEV__) {
   config = merge(config, addConfig);
 }
 
-let finalConfig = merge(baseConfig, config);
+/**
+ * Allow webpack overrides
+ */
+let custom = {};
+if (kitConfig.serverWebpack) {
+  const webpackConfig = kitConfig.serverWebpack(config);
+  if (!webpackConfig) {
+    log('`serverWebpack` field should return config.');
+  } else {
+    log('`serverWebpack` modify is applied.');
+    custom = webpackConfig;
+  }
+}
+
+let finalConfig = merge(baseConfig, config, custom);
 
 module.exports = finalConfig;
