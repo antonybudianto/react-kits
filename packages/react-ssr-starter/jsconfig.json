@@ -1,6 +1,0 @@
-{
-  "compilerOptions": {
-      "allowSyntheticDefaultImports": true,
-      "experimentalDecorators": true
-  }
-}
