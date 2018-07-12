@@ -9,6 +9,7 @@
     "clean": "react-kits clean",
     "lint": "eslint src",
     "test": "jest",
+    "build": "npm run deploy:prod",
     "deploy:dev": "better-npm-run deploy:dev",
     "deploy:staging": "better-npm-run deploy:staging",
     "deploy:prod": "better-npm-run deploy:prod",
