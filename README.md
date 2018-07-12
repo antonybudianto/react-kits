@@ -13,9 +13,6 @@ The project consists of following packages:
 - [react-kits-server](https://github.com/antonybudianto/react-kits/tree/master/packages/react-kits-server)
 
   The custom Express server, for SSR
-- [react-ssr-starter](https://github.com/antonybudianto/react-kits/tree/master/packages/react-ssr-starter)
-
-  The starter that used both packages above
 
 They're managed by [Lerna](https://github.com/lerna/lerna) so you don't need to `npm link` manually :D
 
