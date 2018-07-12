@@ -21,7 +21,7 @@ function init(name) {
       }
       return through(function(chunk, enc, done) {
         var str = chunk.toString();
-        var output = str.replace('{{name}}', name);
+        var output = str.replace('~~name~~', name).replace('{{name}}', name);
         done(null, output);
       });
     }
