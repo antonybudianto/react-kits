@@ -4,4 +4,5 @@ node_js:
 before_script:
   - yarn bootstrap
 script:
+  - yarn test
   - yarn build
