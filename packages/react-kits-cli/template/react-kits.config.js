@@ -1,12 +1,8 @@
-const {
-  ASSET_URL_DEV,
-  ASSET_URL_PROD,
-  ASSET_URL_STAG
-} = require('./src/constant')
+import { ASSET_URL_DEV, ASSET_URL_PROD, ASSET_URL_STAG } from './src/constant'
 
 let assetUrl = ASSET_URL_DEV
 
-module.exports = projectConfig => {
+export function config(projectConfig) {
   if (projectConfig.globals.__STAG__) {
     assetUrl = ASSET_URL_STAG
   } else if (projectConfig.globals.__PROD__) {

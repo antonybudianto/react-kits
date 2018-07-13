@@ -6,7 +6,7 @@ const StartServerPlugin = require('start-server-webpack-plugin');
 const baseConfig = require('./webpack.base.config');
 const { resolveCwd, resolveDir } = require('../util/path');
 const project = require('../config/project.config');
-const kitConfig = require(resolveCwd('react-kits.config'))(project);
+const kitConfig = require(resolveCwd('react-kits.config')).config(project);
 
 let config = {
   target: 'node',

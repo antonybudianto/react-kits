@@ -8,7 +8,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const { resolveCwd, resolveDir } = require('../util/path');
 const baseConfig = require('./webpack.base.config');
 const project = require('../config/project.config');
-const kitConfig = require(resolveCwd('react-kits.config'))(project);
+const kitConfig = require(resolveCwd('react-kits.config')).config(project);
 
 const devMode = project.globals.__DEV__;
 
