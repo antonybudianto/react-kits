@@ -4,7 +4,7 @@
 This is my opinionated Fullstack React kits, featuring SSR, Lazy-loading, Prefetching, Full HMR.
 
 ## Requirement
-- Node >= 8.6
+- Node >= 8.10.0
 
 ## Structure
 
