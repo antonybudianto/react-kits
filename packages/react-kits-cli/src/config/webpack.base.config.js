@@ -6,7 +6,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { log } = require('../util/log');
 const { resolveDir, resolveCwd, pcwd } = require('../util/path');
 const project = require('../config/project.config');
-const kitConfig = require(resolveCwd('react-kits.config'))(project);
+const kitConfig = require(resolveCwd('react-kits.config')).config(project);
 
 const devMode = project.globals.__DEV__;
 let config = {
