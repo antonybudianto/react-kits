@@ -1,3 +1,7 @@
+require('babel-register')({
+  presets: ['env']
+});
+
 function devMiddleware(app) {
   var webpack = require('webpack');
   var webpackConfig = require('../src/config/webpack.client.config');
