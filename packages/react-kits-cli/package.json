@@ -26,6 +26,7 @@
   "homepage": "https://github.com/antonybudianto/react-kits#readme",
   "dependencies": {
     "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-dynamic-import-node": "^2.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -38,6 +39,10 @@
     "chalk": "^2.4.1",
     "css-loader": "^1.0.0",
     "del": "^3.0.0",
+    "eslint": "^5.0.1",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-jest": "^21.17.0",
+    "eslint-plugin-react": "^7.9.1",
     "file-loader": "^1.1.11",
     "loadable-components": "^2.2.2",
     "mini-css-extract-plugin": "^0.4.1",
