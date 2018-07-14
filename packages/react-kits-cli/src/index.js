@@ -41,7 +41,13 @@ yargs
   .command(
     'lint',
     'Run eslint',
-    () => {},
+    c => {
+      return c.options({
+        fix: {
+          describe: 'Auto fix'
+        }
+      });
+    },
     argv => {
       require('./cli/lint');
     }
