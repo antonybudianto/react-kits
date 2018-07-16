@@ -47,7 +47,7 @@ const config = {
           },
           {
             loader: 'sass-loader',
-            options: {}
+            options: kitConfig.sassOptions || {}
           }
         ]
       }
