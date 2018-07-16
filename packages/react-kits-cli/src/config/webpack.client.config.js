@@ -5,6 +5,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 
+const { log } = require('../util/log');
 const { resolveCwd, resolveDir } = require('../util/path');
 const baseConfig = require('./webpack.base.config');
 const project = require('../config/project.config');

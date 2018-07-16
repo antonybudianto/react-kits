@@ -3,6 +3,7 @@ const nodeExternals = require('webpack-node-externals');
 const merge = require('webpack-merge');
 const StartServerPlugin = require('start-server-webpack-plugin');
 
+const { log } = require('../util/log');
 const baseConfig = require('./webpack.base.config');
 const { resolveCwd, resolveDir } = require('../util/path');
 const project = require('../config/project.config');
