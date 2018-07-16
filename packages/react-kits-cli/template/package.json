@@ -7,7 +7,7 @@
   "scripts": {
     "start": "better-npm-run start",
     "clean": "react-kits clean",
-    "lint": "eslint src",
+    "lint": "react-kits lint",
     "test": "jest",
     "build": "npm run deploy:prod",
     "deploy:dev": "better-npm-run deploy:dev",
@@ -90,11 +90,6 @@
     "ua-parser-js": "0.7.18"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.3",
-    "eslint": "^5.0.1",
-    "eslint-plugin-babel": "^5.1.0",
-    "eslint-plugin-jest": "^21.17.0",
-    "eslint-plugin-react": "^7.9.1",
     "http-proxy-middleware": "^0.18.0",
     "jest": "^23.1.0",
     "prettier": "1.13.7",

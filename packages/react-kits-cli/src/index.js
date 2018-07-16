@@ -38,6 +38,20 @@ yargs
       require('./cli/clean');
     }
   )
+  .command(
+    'lint',
+    'Run eslint',
+    c => {
+      return c.options({
+        fix: {
+          describe: 'Auto fix'
+        }
+      });
+    },
+    argv => {
+      require('./cli/lint');
+    }
+  )
   .demandCommand(1, 'Please choose your command')
   .epilog('React Kits CLI')
   .help()
