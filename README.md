@@ -13,14 +13,10 @@ This is my opinionated Fullstack React kits, featuring SSR, Lazy-loading, Prefet
 - Data prefetching
 
 ## Tech stacks
-- [React 16+](https://reactjs.org/)
-- [Redux](https://redux.js.org/)
-- [React Helmet](https://github.com/nfl/react-helmet)
-- [Express](https://expressjs.com/)
-- [loadable-component](https://github.com/smooth-code/loadable-components)
-- [SASS](https://github.com/webpack-contrib/sass-loader)
-- [Babel](https://babeljs.io/)
-- [Jest](https://jestjs.io/)
+|                                                                          	|                                                        	|                                                     	|                                   	|
+|--------------------------------------------------------------------------	|--------------------------------------------------------	|-----------------------------------------------------	|-----------------------------------	|
+|  [React](https://reactjs.org/)                                       	| [Redux](https://redux.js.org/)                         	| [React Helmet](https://github.com/nfl/react-helmet) 	| [Express](https://expressjs.com/) 	|
+| [loadable-component](https://github.com/smooth-code/loadable-components) 	| [SASS](https://github.com/webpack-contrib/sass-loader) 	| [Babel](https://babeljs.io/)                        	| [Jest](https://jestjs.io/)        	|
 
 ## Structure
 
