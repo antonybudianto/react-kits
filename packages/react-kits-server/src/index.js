@@ -64,7 +64,10 @@ export function createReactServer(config) {
     const path = req.path;
     const promises = getInitialData(req, store);
     Promise.all(promises)
-      .then(() => {
+      .catch(err => {
+        console.error('Error fetching data', err);
+      })
+      .finally(() => {
         let context = {};
         const data = {
           path,
@@ -83,10 +86,6 @@ export function createReactServer(config) {
           }
           res.send(html);
         });
-      })
-      .catch(err => {
-        console.error('Error fetching', err);
-        res.status(500).send('Error fetching data');
       });
   });
 
