@@ -15,13 +15,13 @@ class HomeView extends Component {
   render() {
     return (
       <div className="home-view">
-        <div>
-          home view (change HomeView.js and the count should not be reset)
+        <div className="my2">
+          home view (change HomeView.js and states should not be reset)
         </div>
         <div>
           user: {this.props.user.isLoggedIn ? 'loggedIn' : 'notLoggedIn'}
         </div>
-        <div>
+        <div className="my2">
           <button onClick={this.props.toggleLogin}>toggle login</button>
         </div>
         <TestView />
