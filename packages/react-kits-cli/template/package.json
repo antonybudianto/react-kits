@@ -13,7 +13,7 @@
     "deploy:dev": "better-npm-run deploy:dev",
     "deploy:staging": "better-npm-run deploy:staging",
     "deploy:prod": "better-npm-run deploy:prod",
-    "start:dev": "better-npm-run start:dev",
+    "serve": "better-npm-run serve",
     "prettier": "prettier --write \"{src,config}/**/*.js\""
   },
   "betterScripts": {
@@ -23,7 +23,7 @@
         "NODE_ENV": "development"
       }
     },
-    "start:dev": {
+    "serve": {
       "command": "node dist/bundle.js",
       "env": {
         "NODE_ENV": "production"
