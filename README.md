@@ -46,6 +46,14 @@ yarn bootstrap
 # Ready to develop locally!
 ```
 
+### Release packages
+
+```sh
+npm run release
+
+# This will run `build` script for each package before release
+```
+
 ## Forking
 
 This toolkit is easy to fork if you want to add your opinionated stuff.
@@ -68,13 +76,7 @@ This toolkit is easy to fork if you want to add your opinionated stuff.
 - Run `yarn bootstrap` and check if nothing breaks
 - Finally run `npm run release` to release your new fork!
 
-## Release packages
 
-```sh
-npm run release
-
-# This will run `build` script for each package before release
-```
 
 ## License
 MIT
