@@ -1,7 +1,6 @@
 # react-kits [![Build Status](https://travis-ci.com/antonybudianto/react-kits.svg?branch=master)](https://travis-ci.com/antonybudianto/react-kits) [![npm version](https://badge.fury.io/js/react-kits.svg)](https://badge.fury.io/js/react-kits)
 
-
-This is my opinionated Fullstack React kits, featuring SSR, Lazy-loading, Prefetching, Full HMR.
+This is my opinionated Fullstack React toolkits featuring project generation, starting dev server, build production bundle, and common devtools.
 
 ## Requirement
 - Node >= 8.10.0
