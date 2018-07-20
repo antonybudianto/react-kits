@@ -11,6 +11,9 @@
     "lib",
     "template"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "exit 0"
   },
