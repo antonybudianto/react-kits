@@ -1,6 +1,6 @@
 {
   "name": "react-kits-server",
-  "version": "0.7.4",
+  "version": "0.8.0",
   "description": "Express server for react-kits",
   "source": "src/index.js",
   "main": "lib/index.js",
@@ -44,7 +44,7 @@
     "microbundle": "^0.6.0",
     "react": "*",
     "react-dom": "*",
-    "react-kits": "^0.7.4",
+    "react-kits": "^0.8.0",
     "react-router-dom": "*",
     "redux": "*"
   }

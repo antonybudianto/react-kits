@@ -4,5 +4,5 @@
     "packages/*",
     "packages/react-kits-cli/template"
   ],
-  "version": "0.7.4"
+  "version": "0.8.0"
 }
