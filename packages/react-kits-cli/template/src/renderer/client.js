@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { loadComponents } from 'loadable-components'
 
-import { createClientStore } from '../store/createStore'
+import { createClientStore } from '../createStore'
 import App from '../App'
 import 'basscss/css/basscss.css'
 const store = createClientStore(window.INITIAL_STATE)

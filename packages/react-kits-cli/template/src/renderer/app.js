@@ -3,7 +3,7 @@ import React from 'react'
 
 import { createReactServer } from 'react-kits-server'
 
-import createStore from '../store/createStore'
+import createStore from '../createStore'
 import { getInitialData } from '../routes'
 import { HOME_PATH, ASSET_URL } from '../url'
 import App from '../App'
@@ -40,8 +40,8 @@ if (module.hot) {
   module.hot.accept('../App.js', () => {
     console.log('✅ Server hot reloaded ../App.js')
   })
-  module.hot.accept('../store/createStore', () => {
-    console.log('✅ Server hot reloaded ../store/createStore')
+  module.hot.accept('../createStore', () => {
+    console.log('✅ Server hot reloaded ../createStore')
   })
 }
 
