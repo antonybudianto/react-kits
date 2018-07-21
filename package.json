@@ -12,7 +12,8 @@
     "build": "lerna run build",
     "build:lib": "lerna run build --ignore=~~name~~",
     "prerelease": "npm run build:lib",
-    "release": "lerna publish"
+    "release": "lerna publish",
+    "release:next": "npm run release -- --npm-tag=next"
   },
   "repository": {
     "type": "git",
