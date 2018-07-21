@@ -4,12 +4,14 @@
   "author": "Antony Budianto",
   "license": "MIT",
 	"scripts": {
+    "start": "lerna run --parallel start --scope=~~name~~",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
     "ls": "lerna ls",
     "test": "lerna run --parallel test",
     "build": "lerna run build",
-    "prerelease": "npm run build",
+    "build:lib": "lerna run build --ignore=~~name~~",
+    "prerelease": "npm run build:lib",
     "release": "lerna publish"
   },
   "repository": {

@@ -41,7 +41,7 @@
     "serialize-javascript": "^1.5.0"
   },
   "devDependencies": {
-    "microbundle": "^0.5.1",
+    "microbundle": "^0.6.0",
     "react": "*",
     "react-dom": "*",
     "react-kits": "^0.7.4",
