@@ -6,3 +6,4 @@ before_script:
 script:
   - yarn test
   - yarn build
+  - yarn temp:lint
