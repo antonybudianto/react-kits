@@ -1,6 +1,8 @@
 # react-kits [![Build Status](https://travis-ci.com/antonybudianto/react-kits.svg?branch=master)](https://travis-ci.com/antonybudianto/react-kits) [![npm version](https://badge.fury.io/js/react-kits.svg)](https://badge.fury.io/js/react-kits)
 
-This is my opinionated Fullstack React toolkits featuring project generation, starting dev server, build production bundle, and common devtools.
+Opinionated Fullstack React toolkits featuring project generation, dev server, build production bundle, and common devtools.
+
+Inspired by `react-scripts` used by [create-react-app](https://github.com/facebook/create-react-app)
 
 ## Requirement
 - Node >= 8.10.0
