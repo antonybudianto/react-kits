@@ -19,13 +19,15 @@
     "start": {
       "command": "react-kits start",
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "APP_ENV": "development"
       }
     },
     "serve": {
       "command": "node dist/bundle.js",
       "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "APP_ENV": "production"
       }
     },
     "build:dev": {

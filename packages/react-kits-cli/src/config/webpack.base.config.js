@@ -28,6 +28,9 @@ let config = {
   resolveLoader: {
     modules: [resolveDir('../../node_modules'), 'node_modules']
   },
+  output: {
+    publicPath: project.app_asset_path
+  },
   module: {
     rules: [
       {

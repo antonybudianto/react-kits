@@ -7,6 +7,7 @@ const { resolveCwd } = require('../util/path');
 const config = {
   env: process.env.NODE_ENV || 'development',
   app_env: process.env.APP_ENV || 'development',
+  app_asset_path: process.env.APP_ASSET_PATH || '/',
 
   // ----------------------------------
   // Project Structure
@@ -23,6 +24,7 @@ const config = {
 config.globals = {
   'process.env.NODE_ENV': JSON.stringify(config.env),
   'process.env.APP_ENV': JSON.stringify(config.app_env),
+  'process.env.APP_ASSET_PATH': JSON.stringify(config.app_asset_path),
   __DEV__: config.app_env === 'development',
   __STAG__: config.app_env === 'staging',
   __PROD__: config.app_env === 'production'

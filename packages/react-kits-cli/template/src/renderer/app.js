@@ -5,14 +5,14 @@ import { createReactServer } from 'react-kits-server'
 
 import createStore from '../createStore'
 import { getInitialData } from '../routes'
-import { HOME_PATH, ASSET_URL } from '../url'
+import { HOME_PATH } from '../constant/url'
 import App from '../App'
 
 const app = createReactServer({
   createStore,
   getInitialData,
   homePath: HOME_PATH,
-  assetUrl: ASSET_URL,
+  assetUrl: process.env.APP_ASSET_PATH || '/',
   customMiddleware: ins => {
     if (__DEV__) {
       const proxy = require('http-proxy-middleware')
