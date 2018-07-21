@@ -9,5 +9,5 @@
 
 2. Build
    ```
-   npm run deploy:prod
+   npm run build
    ```
