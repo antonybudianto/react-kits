@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
+import { hot } from 'react-hot-loader'
 
-import renderAppRoutes from '../../routes'
+import renderAppRoutes from './routes'
 
-import './CoreLayout.scss'
+import './App.scss'
 
-class CoreLayout extends Component {
+class App extends Component {
   render() {
     return (
       <div>
@@ -22,4 +23,4 @@ class CoreLayout extends Component {
   }
 }
 
-export default CoreLayout
+export default hot(module)(App)

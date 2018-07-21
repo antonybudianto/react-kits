@@ -6,7 +6,7 @@ import { createReactServer } from 'react-kits-server'
 import createStore from '../store/createStore'
 import { getInitialData } from '../routes'
 import { HOME_PATH, ASSET_URL } from '../url'
-import CoreLayout from '../layouts/CoreLayout'
+import App from '../App'
 
 const app = createReactServer({
   createStore,
@@ -30,15 +30,15 @@ const app = createReactServer({
       )
     }
   },
-  onRender: () => <CoreLayout />
+  onRender: () => <App />
 })
 
 if (module.hot) {
   module.hot.accept('../routes', () => {
     console.log('✅ Server hot reloaded ../routes')
   })
-  module.hot.accept('../layouts/CoreLayout', () => {
-    console.log('✅ Server hot reloaded ../layouts')
+  module.hot.accept('../App.js', () => {
+    console.log('✅ Server hot reloaded ../App.js')
   })
   module.hot.accept('../store/createStore', () => {
     console.log('✅ Server hot reloaded ../store/createStore')
