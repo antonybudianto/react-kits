@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import { Helmet } from 'react-helmet'
+import { hot } from 'react-hot-loader'
 
-import renderRoutes from '../../routes'
+import renderAppRoutes from './routes'
 
-import './CoreLayout.scss'
+import './App.scss'
 
-class CoreLayout extends Component {
+class App extends Component {
   render() {
     return (
-      <div className="container text-center">
+      <div>
         <Helmet>
           <title>React App</title>
           <meta name="title" content="React App" />
@@ -16,10 +17,10 @@ class CoreLayout extends Component {
           <meta property="og:title" content="React App" />
           <meta property="og:description" content="React App" />
         </Helmet>
-        <div className="core-layout__viewport">{renderRoutes()}</div>
+        <div>{renderAppRoutes()}</div>
       </div>
     )
   }
 }
 
-export default CoreLayout
+export default hot(module)(App)

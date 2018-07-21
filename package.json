@@ -4,7 +4,6 @@
   "author": "Antony Budianto",
   "license": "MIT",
 	"scripts": {
-    "start": "lerna run --parallel start --scope=~~name~~",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
     "ls": "lerna ls",
@@ -13,7 +12,9 @@
     "build:lib": "lerna run build --ignore=~~name~~",
     "prerelease": "npm run build:lib",
     "release": "lerna publish",
-    "release:next": "npm run release -- --npm-tag=next"
+    "release:next": "npm run release -- --npm-tag=next",
+    "temp:start": "lerna run --parallel start --scope=~~name~~",
+    "temp:lint": "lerna run --parallel lint --scope=~~name~~"
   },
   "repository": {
     "type": "git",

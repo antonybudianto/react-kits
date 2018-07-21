@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const fs = require('fs');
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -6,7 +7,12 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { log } = require('../util/log');
 const { resolveDir, resolveCwd, pcwd } = require('../util/path');
 const project = require('../config/project.config');
-const kitConfig = require(resolveCwd('react-kits.config')).config(project);
+
+const rkitConfigPath = resolveCwd('./react-kits.config.js');
+let kitConfig = {};
+if (fs.existsSync(rkitConfigPath)) {
+  kitConfig = require(rkitConfigPath).config(project);
+}
 
 const devMode = project.globals.__DEV__;
 let config = {
@@ -21,6 +27,9 @@ let config = {
   },
   resolveLoader: {
     modules: [resolveDir('../../node_modules'), 'node_modules']
+  },
+  output: {
+    publicPath: project.app_asset_path
   },
   module: {
     rules: [
@@ -76,12 +85,12 @@ let config = {
  * Allow webpack overrides
  */
 let custom = {};
-if (kitConfig.baseWebpack) {
-  const webpackConfig = kitConfig.baseWebpack(config);
+if (kitConfig.webpack && kitConfig.webpack.base) {
+  const webpackConfig = kitConfig.webpack.base(config);
   if (!webpackConfig) {
-    log('`baseWebpack` field should return config.');
+    log('`webpack.base` field should return config.');
   } else {
-    log('`baseWebpack` modify is applied.');
+    log('`webpack.base` modify is applied.');
     custom = webpackConfig;
   }
 }

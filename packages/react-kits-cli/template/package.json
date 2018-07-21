@@ -2,48 +2,49 @@
   "name": "~~name~~",
   "version": "0.8.0",
   "description": "react ssr starter",
-  "main": "index.js",
   "private": true,
   "scripts": {
     "start": "better-npm-run start",
     "clean": "react-kits clean",
     "lint": "react-kits lint",
     "test": "jest",
-    "build": "npm run deploy:prod",
-    "deploy:dev": "better-npm-run deploy:dev",
-    "deploy:staging": "better-npm-run deploy:staging",
-    "deploy:prod": "better-npm-run deploy:prod",
+    "build": "npm run build:prod",
+    "build:dev": "better-npm-run build:dev",
+    "build:staging": "better-npm-run build:staging",
+    "build:prod": "better-npm-run build:prod",
     "serve": "better-npm-run serve",
-    "prettier": "prettier --write \"{src,config}/**/*.js\""
+    "prettier": "prettier --write \"src/**/*.js\""
   },
   "betterScripts": {
     "start": {
       "command": "react-kits start",
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "APP_ENV": "development"
       }
     },
     "serve": {
       "command": "node dist/bundle.js",
       "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "APP_ENV": "production"
       }
     },
-    "deploy:dev": {
+    "build:dev": {
       "command": "react-kits build",
       "env": {
         "NODE_ENV": "development",
         "APP_ENV": "development"
       }
     },
-    "deploy:staging": {
+    "build:staging": {
       "command": "react-kits build",
       "env": {
         "NODE_ENV": "production",
         "APP_ENV": "staging"
       }
     },
-    "deploy:prod": {
+    "build:prod": {
       "command": "react-kits build",
       "env": {
         "NODE_ENV": "production",

@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
-import reducer from '../reducers'
+
+import reducer from './reducers'
 
 export const createClientStore = initialState => {
   const composeEnhancers = __DEV__
@@ -9,9 +10,9 @@ export const createClientStore = initialState => {
   const store = createDefaultStore(initialState, composeEnhancers)
 
   if (module.hot) {
-    module.hot.accept('../reducers', () => {
+    module.hot.accept('./reducers', () => {
       console.log('Root reducer updated')
-      const nextRootReducer = require('../reducers').default
+      const nextRootReducer = require('./reducers').default
       store.replaceReducer(nextRootReducer)
     })
   }
