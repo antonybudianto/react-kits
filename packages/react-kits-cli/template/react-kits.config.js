@@ -8,13 +8,16 @@ export function config(projectConfig) {
   } else if (projectConfig.globals.__PROD__) {
     assetUrl = ASSET_URL_PROD
   }
-  return {
-    baseWebpack: () => {
-      return {
-        output: {
-          publicPath: assetUrl
+  const config = {
+    webpack: {
+      base: () => {
+        return {
+          output: {
+            publicPath: assetUrl
+          }
         }
       }
     }
   }
+  return config
 }
