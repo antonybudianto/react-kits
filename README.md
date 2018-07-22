@@ -4,9 +4,11 @@ Opinionated Fullstack React toolkits featuring project generation, dev server, b
 
 Inspired by `react-scripts` from [create-react-app](https://github.com/facebook/create-react-app)
 
-Why not create-react-app?
-- You have many customization that create-react-app cannot fulfill
-- You want full control of your build process, but in a manner of reusable toolkits (e.g. [react-scripts](https://github.com/facebook/create-react-app), [kcd-scripts](https://github.com/kentcdodds/kcd-scripts))
+> If you're just learning React, please try [create-react-app](https://github.com/facebook/create-react-app)
+
+Why not [create-react-app](https://github.com/facebook/create-react-app)?
+- You want to house your own toolkit for your startup/company, with lots of opinionated customization
+- You want full control of your build configuration, but in a manner of reusable toolkits (e.g. [react-scripts](https://github.com/facebook/create-react-app), [kcd-scripts](https://github.com/kentcdodds/kcd-scripts))
 
 ## Requirement
 - Node >= 8.10.0
