@@ -1,21 +1,17 @@
 const merge = require('webpack-merge');
 const webpack = require('webpack');
-const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 
 const { log } = require('../util/log');
-const { resolveCwd, resolveDir } = require('../util/path');
+const { generateKitConfig } = require('../util/config');
+const { resolveDir } = require('../util/path');
 const baseConfig = require('./webpack.base.config');
 const project = require('../config/project.config');
 
-const rkitConfigPath = resolveCwd('./react-kits.config.js');
-let kitConfig = {};
-if (fs.existsSync(rkitConfigPath)) {
-  kitConfig = require(rkitConfigPath).config(project);
-}
+const kitConfig = generateKitConfig(project);
 
 const devMode = project.globals.__DEV__;
 
@@ -53,7 +49,7 @@ const config = {
           },
           {
             loader: 'sass-loader',
-            options: kitConfig.sassOptions || {}
+            options: kitConfig.webpack.sassOptions || {}
           }
         ]
       }
@@ -96,7 +92,7 @@ const config = {
  * Allow webpack overrides
  */
 let custom = {};
-if (kitConfig.webpack && kitConfig.webpack.client) {
+if (kitConfig.webpack.client) {
   const webpackConfig = kitConfig.webpack.client(config);
   if (!webpackConfig) {
     log('`webpack.client` field should return config.');

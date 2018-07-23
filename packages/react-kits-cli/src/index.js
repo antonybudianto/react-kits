@@ -1,9 +1,5 @@
 #!/usr/bin/env node
 
-require('babel-register')({
-  presets: ['env', 'stage-3']
-});
-
 const yargs = require('yargs');
 yargs
   .command(

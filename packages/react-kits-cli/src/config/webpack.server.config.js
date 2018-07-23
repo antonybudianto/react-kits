@@ -1,18 +1,17 @@
 const webpack = require('webpack');
-const fs = require('fs');
 const nodeExternals = require('webpack-node-externals');
 const merge = require('webpack-merge');
 const StartServerPlugin = require('start-server-webpack-plugin');
 
 const { log } = require('../util/log');
+const { generateKitConfig } = require('../util/config');
 const baseConfig = require('./webpack.base.config');
-const { resolveCwd, resolveDir } = require('../util/path');
+const { resolveDir } = require('../util/path');
 const project = require('../config/project.config');
 
-const rkitConfigPath = resolveCwd('./react-kits.config.js');
-let kitConfig = {};
-if (fs.existsSync(rkitConfigPath)) {
-  kitConfig = require(rkitConfigPath).config(project);
+const kitConfig = generateKitConfig(project);
+if (kitConfig.__found) {
+  log('react-kits.config.js found');
 }
 
 let config = {
@@ -65,7 +64,7 @@ if (project.globals.__DEV__) {
  * Allow webpack overrides
  */
 let custom = {};
-if (kitConfig.webpack && kitConfig.webpack.server) {
+if (kitConfig.webpack.server) {
   const webpackConfig = kitConfig.webpack.server(config);
   if (!webpackConfig) {
     log('`webpack.server` field should return config.');
