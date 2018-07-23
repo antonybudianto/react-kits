@@ -1,18 +1,14 @@
 const webpack = require('webpack');
-const fs = require('fs');
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const { log } = require('../util/log');
-const { resolveDir, resolveCwd, pcwd } = require('../util/path');
+const { generateKitConfig } = require('../util/config');
+const { resolveDir, pcwd } = require('../util/path');
 const project = require('../config/project.config');
 
-const rkitConfigPath = resolveCwd('./react-kits.config.js');
-let kitConfig = {};
-if (fs.existsSync(rkitConfigPath)) {
-  kitConfig = require(rkitConfigPath).config(project);
-}
+const kitConfig = generateKitConfig(project);
 
 const devMode = project.globals.__DEV__;
 let config = {
@@ -85,7 +81,7 @@ let config = {
  * Allow webpack overrides
  */
 let custom = {};
-if (kitConfig.webpack && kitConfig.webpack.base) {
+if (kitConfig.webpack.base) {
   const webpackConfig = kitConfig.webpack.base(config);
   if (!webpackConfig) {
     log('`webpack.base` field should return config.');
