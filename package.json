@@ -8,6 +8,7 @@
     "clean": "lerna clean",
     "ls": "lerna ls",
     "test": "lerna run --parallel test",
+    "watch": "lerna run --parallel watch",
     "build": "lerna run build",
     "build:lib": "lerna run build --ignore=~~name~~",
     "prerelease": "npm run build:lib",
