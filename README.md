@@ -4,7 +4,7 @@ Opinionated Fullstack React toolkits featuring project generation, dev server, b
 
 Inspired by `react-scripts` from [create-react-app](https://github.com/facebook/create-react-app)
 
-> If you're just learning React, please try [create-react-app](https://github.com/facebook/create-react-app)
+> If you just start learning React, please try [create-react-app](https://github.com/facebook/create-react-app)
 
 Why not [create-react-app](https://github.com/facebook/create-react-app)?
 - You want to house your own toolkit for your startup/company, with lots of opinionated customization
@@ -29,13 +29,9 @@ Why not [create-react-app](https://github.com/facebook/create-react-app)?
 
 The project consists of following packages:
 - [react-kits-cli](https://github.com/antonybudianto/react-kits/tree/master/packages/react-kits-cli)
-
-  The CLI, handles start dev-server, bundling, and common utils
 - [react-kits-server](https://github.com/antonybudianto/react-kits/tree/master/packages/react-kits-server)
 
-  The custom Express server, for SSR
-
-They're managed by [Lerna](https://github.com/lerna/lerna) so you don't need to `npm link` manually :D
+They're managed by [Lerna](https://github.com/lerna/lerna) so you don't need to do stuff manually (linking, releasing, etc) :D
 
 ## Getting started
 ```sh
