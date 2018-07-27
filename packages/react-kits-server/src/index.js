@@ -10,6 +10,7 @@ export function createReactServer(config) {
     homePath,
     assetUrl,
     onRender,
+    template,
     customMiddleware = () => {}
   } = config;
   const app = express();
@@ -25,12 +26,6 @@ export function createReactServer(config) {
 
   app.use(logger);
 
-  let devAssets = {
-    appJs: '',
-    vendorJs: '',
-    appCss: ''
-  };
-
   if (process.env.NODE_ENV === 'development') {
     const { devMiddleware } = require('react-kits/lib/express-dev');
     devMiddleware(app);
@@ -41,43 +36,22 @@ export function createReactServer(config) {
   app.use(homePath, express.static('dist'));
 
   app.get(homePath + '(*)', (req, res) => {
-    if (process.env.NODE_ENV === 'development') {
-      const assetsByChunkName = res.locals.webpackStats.toJson()
-        .assetsByChunkName;
-      devAssets.appJs = assetsByChunkName.app.find(f =>
-        /^app(\.[a-z0-9]+)?\.js$/.test(f)
-      );
-      devAssets.appCss = assetsByChunkName.app.find(f =>
-        /^app(\.[a-z0-9]+)?\.css$/.test(f)
-      );
-      devAssets.vendorJs = assetsByChunkName.vendor.find(f =>
-        /^vendor(\.[a-z0-9]+)?\.js$/.test(f)
-      );
-      devAssets.vendorCss = assetsByChunkName.vendor.find(f =>
-        /^vendor(\.[a-z0-9]+)?\.css$/.test(f)
-      );
-    }
-
     const store = createStore();
     // attach cookies to store object as a way to let cookies to be passed into server fetching
     req.headers.cookie && (store['cookies'] = req.headers.cookie);
-    const path = req.path;
     const promises = getInitialData(req, store);
     Promise.all(promises)
-      .catch(err => {
-        console.error('Error fetching data', err);
-      })
       .finally(() => {
         let context = {};
         const data = {
-          path,
+          expressCtx: { req, res },
           store,
           context,
-          devAssets,
           onRender,
-          assetUrl
+          assetUrl,
+          template
         };
-        serverRender(data).then(html => {
+        return serverRender(data).then(html => {
           if (context.status === 404) {
             return res.status(404).send(html);
           }
@@ -86,6 +60,9 @@ export function createReactServer(config) {
           }
           res.send(html);
         });
+      })
+      .catch(err => {
+        console.error('Error getInitialData:\n', err);
       });
   });
 

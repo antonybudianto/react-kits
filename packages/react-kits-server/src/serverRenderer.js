@@ -22,14 +22,37 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 export default ({
-  onRender,
-  assetUrl = '/',
-  path,
+  expressCtx,
   store,
   context,
-  devAssets
+  onRender,
+  assetUrl = '/',
+  template = {
+    renderBottom: () => ''
+  }
 }) => {
+  const { req, res } = expressCtx;
+  const reqPath = req.path;
   if (process.env.NODE_ENV === 'development') {
+    let devAssets = {
+      appJs: '',
+      vendorJs: '',
+      appCss: ''
+    };
+    const assetsByChunkName = res.locals.webpackStats.toJson()
+      .assetsByChunkName;
+    devAssets.appJs = assetsByChunkName.app.find(f =>
+      /^app(\.[a-z0-9]+)?\.js$/.test(f)
+    );
+    devAssets.appCss = assetsByChunkName.app.find(f =>
+      /^app(\.[a-z0-9]+)?\.css$/.test(f)
+    );
+    devAssets.vendorJs = assetsByChunkName.vendor.find(f =>
+      /^vendor(\.[a-z0-9]+)?\.js$/.test(f)
+    );
+    devAssets.vendorCss = assetsByChunkName.vendor.find(f =>
+      /^vendor(\.[a-z0-9]+)?\.css$/.test(f)
+    );
     vendor = assetUrl + devAssets.vendorJs;
     app = assetUrl + devAssets.appJs;
     appStyle = devAssets.appCss ? assetUrl + devAssets.appCss : null;
@@ -45,8 +68,8 @@ export default ({
 
   const appEl = (
     <Provider store={store}>
-      <StaticRouter location={path} context={context}>
-        {onRender()}
+      <StaticRouter location={reqPath} context={context}>
+        {onRender({ expressCtx })}
       </StaticRouter>
     </Provider>
   );
@@ -68,7 +91,7 @@ export default ({
         ${helmet.link.toString()}
       </head>
       <body>
-        <div id='root'>${content}</div>
+        <div id='root'>${content}</div>${template.renderBottom({ expressCtx })}
         <script>window.INITIAL_STATE=${serialize(store.getState())}</script>
         ${loadableState.getScriptTag()}
         <script src='${vendor}'></script>
