@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
   vendorStyle = manifest['vendor.css'];
 }
 
-export default ({
+export default async ({
   expressCtx,
   store,
   context,
@@ -66,37 +66,40 @@ export default ({
     ? `<link rel='stylesheet' href='${vendorStyle}'>`
     : '';
 
-  const appEl = (
+  const elementData = onRender({ expressCtx });
+  const promiseOfEl =
+    elementData instanceof Promise ? elementData : Promise.resolve(elementData);
+  const appEl = await promiseOfEl;
+
+  const rootEl = (
     <Provider store={store}>
       <StaticRouter location={reqPath} context={context}>
-        {onRender({ expressCtx })}
+        {appEl}
       </StaticRouter>
     </Provider>
   );
 
-  return getLoadableState(appEl).then(loadableState => {
-    const content = renderToString(appEl);
+  const loadableState = await getLoadableState(rootEl);
+  const content = renderToString(rootEl);
+  const helmet = Helmet.renderStatic();
 
-    const helmet = Helmet.renderStatic();
-
-    return `<!doctype html>
-      <html>
-      <head>
-        ${helmet.title.toString()}
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-        ${helmet.meta.toString()}
-        ${vendorStyleTag}
-        ${appStyleTag}
-        ${helmet.link.toString()}
-      </head>
-      <body>
-        <div id='root'>${content}</div>${template.renderBottom({ expressCtx })}
-        <script>window.INITIAL_STATE=${serialize(store.getState())}</script>
-        ${loadableState.getScriptTag()}
-        <script src='${vendor}'></script>
-        <script src='${app}'></script>
-      </body>
-      </html>`;
-  });
+  return `<!doctype html>
+  <html>
+  <head>
+    ${helmet.title.toString()}
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    ${helmet.meta.toString()}
+    ${vendorStyleTag}
+    ${appStyleTag}
+    ${helmet.link.toString()}
+  </head>
+  <body>
+    <div id='root'>${content}</div>${template.renderBottom({ expressCtx })}
+    <script>window.INITIAL_STATE=${serialize(store.getState())}</script>
+    ${loadableState.getScriptTag()}
+    <script src='${vendor}'></script>
+    <script src='${app}'></script>
+  </body>
+  </html>`;
 };
