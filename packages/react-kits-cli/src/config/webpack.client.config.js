@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const { log } = require('../util/log');
 const { generateKitConfig } = require('../util/config');
@@ -88,6 +89,14 @@ const config = {
           })
         ]
     ).filter(p => p !== undefined),
+    new WorkboxPlugin.GenerateSW({
+      // these options encourage the ServiceWorkers to get in there fast
+      // and not allow any straggling "old" SWs to hang around
+      clientsClaim: true,
+      skipWaiting: true,
+      // skip app chunk when dev mode
+      excludeChunks: project.globals.__DEV__ ? ['app'] : []
+    }),
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[hash].css',
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
