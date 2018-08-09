@@ -4,7 +4,7 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { getLoadableState } from 'loadable-components/server';
-import { Helmet } from 'react-helmet';
+import { HelmetProvider } from 'react-helmet-async';
 
 let vendor;
 let app;
@@ -70,18 +70,21 @@ export default async ({
   const promiseOfEl =
     elementData instanceof Promise ? elementData : Promise.resolve(elementData);
   const appEl = await promiseOfEl;
+  let helmetCtx = {};
 
   const rootEl = (
-    <Provider store={store}>
-      <StaticRouter location={reqPath} context={context}>
-        {appEl}
-      </StaticRouter>
-    </Provider>
+    <HelmetProvider context={helmetCtx}>
+      <Provider store={store}>
+        <StaticRouter location={reqPath} context={context}>
+          {appEl}
+        </StaticRouter>
+      </Provider>
+    </HelmetProvider>
   );
 
   const loadableState = await getLoadableState(rootEl);
   const content = renderToString(rootEl);
-  const helmet = Helmet.renderStatic();
+  const { helmet } = helmetCtx;
 
   return `<!doctype html>
   <html>

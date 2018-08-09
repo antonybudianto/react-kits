@@ -30,13 +30,13 @@
     "react-dom": "*",
     "react-kits": "*",
     "react-router-dom": "*",
+    "react-helmet-async": "0.1.0",
     "redux": "*"
   },
   "dependencies": {
     "express": "^4.16.3",
     "loadable-components": "^2.2.2",
     "morgan": "^1.9.0",
-    "react-helmet": "^5.2.0",
     "react-redux": "^5.0.7",
     "serialize-javascript": "^1.5.0"
   },
@@ -45,6 +45,7 @@
     "react": "*",
     "react-dom": "*",
     "react-kits": "^0.10.0",
+    "react-helmet-async": "0.1.0",
     "react-router-dom": "*",
     "redux": "*"
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Helmet } from 'react-helmet'
+import Helmet from 'react-helmet-async'
 import { hot } from 'react-hot-loader'
 
 import renderAppRoutes from './routes'
