@@ -22,7 +22,7 @@ Why not [create-react-app](https://github.com/facebook/create-react-app)?
 ## Tech stacks
 |                                                                          	|                                                        	|                                                     	|                                   	|
 |--------------------------------------------------------------------------	|--------------------------------------------------------	|-----------------------------------------------------	|-----------------------------------	|
-|  [React](https://reactjs.org/)                                       	| [Redux](https://redux.js.org/)                         	| [React Helmet](https://github.com/nfl/react-helmet) 	| [Express](https://expressjs.com/) 	|
+|  [React](https://reactjs.org/)                                       	| [Redux](https://redux.js.org/)                         	| [React Helmet Async](https://github.com/staylor/react-helmet-async) 	| [Express](https://expressjs.com/) 	|
 | [loadable-component](https://github.com/smooth-code/loadable-components) 	| [SASS](https://github.com/webpack-contrib/sass-loader) 	| [Babel](https://babeljs.io/)                        	| [Jest](https://jestjs.io/)        	|
 
 ## Structure
