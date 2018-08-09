@@ -6,6 +6,7 @@ import { hydrate } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { loadComponents } from 'loadable-components'
+import { HelmetProvider } from 'react-helmet-async'
 
 import { createClientStore } from '../createStore'
 import App from '../App'
@@ -14,11 +15,13 @@ const store = createClientStore(window.INITIAL_STATE)
 
 function render(MyApp) {
   hydrate(
-    <Provider store={store}>
-      <BrowserRouter>
-        <MyApp />
-      </BrowserRouter>
-    </Provider>,
+    <HelmetProvider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <MyApp />
+        </BrowserRouter>
+      </Provider>
+    </HelmetProvider>,
     document.querySelector('#root')
   )
 }
