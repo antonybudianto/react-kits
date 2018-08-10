@@ -6,24 +6,12 @@ import { StaticRouter } from 'react-router-dom';
 import { getLoadableState } from 'loadable-components/server';
 import { HelmetProvider } from 'react-helmet-async';
 
+import { generateAssets } from './assetUtil';
+
 let vendor;
 let app;
 let appStyle;
 let vendorStyle;
-
-function normalizeAssets(assets) {
-  return Array.isArray(assets) ? assets : [assets];
-}
-
-if (process.env.NODE_ENV === 'production') {
-  const path = require('path');
-  const cwd = process.cwd();
-  const manifest = require(path.resolve(cwd, 'dist/manifest.json'));
-  vendor = manifest['vendor.js'];
-  app = manifest['app.js'];
-  appStyle = manifest['app.css'];
-  vendorStyle = manifest['vendor.css'];
-}
 
 export default async ({
   expressCtx,
@@ -37,31 +25,11 @@ export default async ({
 }) => {
   const { req, res } = expressCtx;
   const reqPath = req.path;
-  if (process.env.NODE_ENV === 'development') {
-    let devAssets = {
-      appJs: '',
-      vendorJs: '',
-      appCss: ''
-    };
-    const assetsByChunkName = res.locals.webpackStats.toJson()
-      .assetsByChunkName;
-    devAssets.appJs = normalizeAssets(assetsByChunkName.app).find(f =>
-      /^app(\.[a-z0-9]+)?\.js$/.test(f)
-    );
-    devAssets.appCss = normalizeAssets(assetsByChunkName.app).find(f =>
-      /^app(\.[a-z0-9]+)?\.css$/.test(f)
-    );
-    devAssets.vendorJs = normalizeAssets(assetsByChunkName.vendor).find(f =>
-      /^vendor(\.[a-z0-9]+)?\.js$/.test(f)
-    );
-    devAssets.vendorCss = normalizeAssets(assetsByChunkName.vendor).find(f =>
-      /^vendor(\.[a-z0-9]+)?\.css$/.test(f)
-    );
-    vendor = assetUrl + devAssets.vendorJs;
-    app = assetUrl + devAssets.appJs;
-    appStyle = devAssets.appCss ? assetUrl + devAssets.appCss : null;
-    vendorStyle = devAssets.vendorCss ? assetUrl + devAssets.vendorCss : null;
-  }
+  const assetData = generateAssets({ expressCtx, assetUrl });
+  vendor = assetData.vendor;
+  app = assetData.app;
+  appStyle = assetData.appStyle;
+  vendorStyle = assetData.vendorStyle;
 
   const appStyleTag = appStyle
     ? `<link rel='stylesheet' href='${appStyle}'>`
@@ -102,7 +70,9 @@ export default async ({
     ${helmet.link.toString()}
   </head>
   <body>
-    <div id='root'>${content}</div>${template.renderBottom({ expressCtx })}
+    <div id='root'>${content}</div>
+    ${helmet.script.toString()}
+    ${template.renderBottom({ expressCtx })}
     <script>window.INITIAL_STATE=${serialize(store.getState())}</script>
     ${loadableState.getScriptTag()}
     <script src='${vendor}'></script>
