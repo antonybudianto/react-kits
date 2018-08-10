@@ -3,17 +3,19 @@
   "description": "React Kits monorepo",
   "author": "Antony Budianto",
   "license": "MIT",
-	"scripts": {
+  "scripts": {
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
     "ls": "lerna ls",
-    "test": "lerna run --parallel test",
+    "test": "lerna run --stream test",
+    "lint": "lerna run --stream lint",
     "watch": "lerna run --parallel watch",
     "build": "lerna run build",
     "build:lib": "lerna run build --ignore=~~name~~",
     "prerelease": "npm run build:lib",
     "release": "lerna publish",
     "release:next": "npm run release -- --npm-tag=next",
+    "exec:server": "lerna exec --scope react-kits-server --",
     "temp:start": "lerna run --parallel start --scope=~~name~~",
     "temp:lint": "lerna run --parallel lint --scope=~~name~~"
   },
@@ -22,7 +24,10 @@
     "url": "git+https://github.com/antonybudianto/react-kits.git"
   },
   "homepage": "https://github.com/antonybudianto/react-kits#readme",
-	"devDependencies": {
-		"lerna": "^2.11.0"
-	}
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "jest": "^23.4.2",
+    "lerna": "^2.11.0"
+  }
 }
