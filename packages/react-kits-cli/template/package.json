@@ -1,6 +1,6 @@
 {
   "name": "~~name~~",
-  "version": "0.13.0",
+  "version": "1.0.0-0",
   "description": "react ssr starter",
   "private": true,
   "scripts": {
@@ -81,7 +81,7 @@
     "react-dom": "16.4.1",
     "react-helmet-async": "0.1.0",
     "react-hot-loader": "^4.3.3",
-    "react-kits-server": "^0.13.0",
+    "react-kits-server": "^1.0.0-0",
     "react-redux": "5.0.7",
     "react-router-config": "1.0.0-beta.4",
     "react-router-dom": "4.2.2",
@@ -94,7 +94,7 @@
     "http-proxy-middleware": "^0.18.0",
     "jest": "^23.1.0",
     "prettier": "1.13.7",
-    "react-kits": "^0.13.0",
+    "react-kits": "^1.0.0-0",
     "webpack-hot-middleware": "^2.22.2"
   }
 }
