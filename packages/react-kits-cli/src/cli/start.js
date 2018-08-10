@@ -31,11 +31,6 @@ cleanBuild().then(() => {
     if (stats.hasWarnings()) {
       console.warn(info.warnings);
     }
-    console.log(
-      stats.toString({
-        modules: false,
-        colors: true
-      })
-    );
+    console.log(stats.toString(config.stats));
   });
 });

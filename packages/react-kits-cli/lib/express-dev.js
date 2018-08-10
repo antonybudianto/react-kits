@@ -6,12 +6,7 @@ function devMiddleware(app) {
   app.use(
     require('webpack-dev-middleware')(compiler, {
       serverSideRender: true,
-      stats: {
-        hash: false,
-        modules: false,
-        entrypoints: false,
-        colors: true
-      },
+      stats: webpackConfig.stats,
       publicPath: webpackConfig.output.publicPath
     })
   );
