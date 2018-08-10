@@ -16,7 +16,7 @@ const kitConfig = generateKitConfig(project);
 const devMode = project.globals.__DEV__;
 
 const config = {
-  devtool: project.globals.__PROD__ ? false : 'source-map',
+  devtool: project.globals.__PROD__ ? false : 'cheap-module-eval-source-map',
   entry: {
     app: [
       ...(project.globals.__DEV__

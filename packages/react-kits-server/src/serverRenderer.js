@@ -11,6 +11,10 @@ let app;
 let appStyle;
 let vendorStyle;
 
+function normalizeAssets(assets) {
+  return Array.isArray(assets) ? assets : [assets];
+}
+
 if (process.env.NODE_ENV === 'production') {
   const path = require('path');
   const cwd = process.cwd();
@@ -41,16 +45,16 @@ export default async ({
     };
     const assetsByChunkName = res.locals.webpackStats.toJson()
       .assetsByChunkName;
-    devAssets.appJs = assetsByChunkName.app.find(f =>
+    devAssets.appJs = normalizeAssets(assetsByChunkName.app).find(f =>
       /^app(\.[a-z0-9]+)?\.js$/.test(f)
     );
-    devAssets.appCss = assetsByChunkName.app.find(f =>
+    devAssets.appCss = normalizeAssets(assetsByChunkName.app).find(f =>
       /^app(\.[a-z0-9]+)?\.css$/.test(f)
     );
-    devAssets.vendorJs = assetsByChunkName.vendor.find(f =>
+    devAssets.vendorJs = normalizeAssets(assetsByChunkName.vendor).find(f =>
       /^vendor(\.[a-z0-9]+)?\.js$/.test(f)
     );
-    devAssets.vendorCss = assetsByChunkName.vendor.find(f =>
+    devAssets.vendorCss = normalizeAssets(assetsByChunkName.vendor).find(f =>
       /^vendor(\.[a-z0-9]+)?\.css$/.test(f)
     );
     vendor = assetUrl + devAssets.vendorJs;
