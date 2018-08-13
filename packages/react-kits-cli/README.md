@@ -19,6 +19,8 @@ react-kits start
 
 react-kits build
 
+react-kits build-dll
+
 react-kits lint
 
 react-kits clean

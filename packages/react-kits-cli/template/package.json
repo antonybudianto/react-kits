@@ -4,15 +4,16 @@
   "description": "react ssr starter",
   "private": true,
   "scripts": {
-    "start": "better-npm-run start",
+    "start": "bnr start",
     "clean": "react-kits clean",
     "lint": "react-kits lint",
+    "dll": "react-kits build-dll",
     "test": "jest",
     "build": "npm run build:prod",
-    "build:dev": "better-npm-run build:dev",
-    "build:staging": "better-npm-run build:staging",
-    "build:prod": "better-npm-run build:prod",
-    "serve": "better-npm-run serve",
+    "build:dev": "bnr build:dev",
+    "build:staging": "bnr build:staging",
+    "build:prod": "bnr build:prod",
+    "serve": "bnr serve",
     "prettier": "prettier --write \"src/**/*.js\""
   },
   "betterScripts": {

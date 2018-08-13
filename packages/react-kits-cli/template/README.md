@@ -2,15 +2,20 @@
 
 ## How to use
 
-1. Start
-   ```
-   npm start
-   ```
+### Start
+    ```
+    npm start
+    ```
 
-2. Build
-   ```
-   npm run build
-   ```
+### Build
+    ```
+    npm run build
+    ```
+
+### Build DLL for caching
+    ```sh
+    npm run dll
+    ```
 
 ### Available environment variables
 - APP_ENV (App environment, default to "development")
