@@ -13,6 +13,14 @@ let app;
 let appStyle;
 let vendorStyle;
 
+const fs = require('fs');
+const path = require('path');
+const cwd = process.cwd();
+const pcwd = path.resolve(cwd);
+function resolveCwd(name) {
+  return path.resolve(cwd, name);
+}
+
 export default async ({
   expressCtx,
   store,
@@ -37,6 +45,12 @@ export default async ({
   const vendorStyleTag = vendorStyle
     ? `<link rel='stylesheet' href='${vendorStyle}'>`
     : '';
+  let dllScript = '';
+  if (process.env.NODE_ENV === 'development') {
+    if (fs.existsSync(resolveCwd('dist/vendorDll.js'))) {
+      dllScript = `<script src='${assetUrl}vendorDll.js'></script>`;
+    }
+  }
 
   const elementData = onRender({ expressCtx });
   const promiseOfEl =
@@ -75,6 +89,7 @@ export default async ({
     ${template.renderBottom({ expressCtx })}
     <script>window.INITIAL_STATE=${serialize(store.getState())}</script>
     ${loadableState.getScriptTag()}
+    ${dllScript}
     <script src='${vendor}'></script>
     <script src='${app}'></script>
   </body>

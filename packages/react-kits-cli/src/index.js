@@ -13,7 +13,13 @@ yargs
   .command(
     'start',
     'Start React server',
-    () => {},
+    c => {
+      return c.options({
+        clean: {
+          describe: 'Clean dist before start'
+        }
+      });
+    },
     argv => {
       require('./cli/start');
     }
@@ -24,6 +30,14 @@ yargs
     () => {},
     argv => {
       require('./cli/build');
+    }
+  )
+  .command(
+    'build-dll',
+    'Build DLL cache',
+    () => {},
+    argv => {
+      require('./cli/build-dll');
     }
   )
   .command(

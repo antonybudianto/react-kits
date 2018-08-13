@@ -1,7 +1,17 @@
 import React from 'react';
+import fs from 'fs';
 import serverRenderer from './serverRenderer';
 
 process.env.NODE_ENV = 'development';
+
+const existsSyncOri = fs.existsSync;
+
+const existsSyncSpy = jest.spyOn(fs, 'existsSync').mockImplementation(str => {
+  if (/dist\/vendorDll\.js/.test(str)) {
+    return false;
+  }
+  return existsSyncOri(str);
+});
 
 jest.mock('./assetUtil.js', () => {
   return {
@@ -40,6 +50,43 @@ test('works with minimum setup', done => {
     onRender: () => <div>test123</div>
   }).then(str => {
     expect(str).toMatch(/test123/);
+    done();
+  });
+});
+
+test('works with minimum setup - with DLL', done => {
+  existsSyncSpy.mockImplementation(str => {
+    if (/dist\/vendorDll\.js/.test(str)) {
+      return true;
+    }
+    return existsSyncOri(str);
+  });
+  serverRenderer({
+    expressCtx: {
+      req: {},
+      res: {
+        locals: {
+          webpackStats: {
+            toJson: () => ({
+              assetsByChunkName: {
+                app: ['app.js', 'app.css'],
+                vendor: ['vendor.js', 'vendor.css']
+              }
+            })
+          }
+        }
+      }
+    },
+    context: {},
+    store: {
+      dispatch: jest.fn(),
+      subscribe: jest.fn(),
+      getState: jest.fn()
+    },
+    onRender: () => <div>test123</div>
+  }).then(str => {
+    expect(str).toMatch(/test123/);
+    expect(str).toMatch("<script src='/vendorDll.js'></script>");
     done();
   });
 });

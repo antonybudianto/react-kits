@@ -2,7 +2,12 @@ const webpack = require('webpack');
 const del = require('del');
 const { log } = require('../util/log');
 
+const isClean = process.argv.slice(2).indexOf('--clean') >= 0;
+
 function cleanBuild() {
+  if (!isClean) {
+    return Promise.resolve();
+  }
   log('Cleaning build...');
   return del(['dist']).then(() => {
     log('Build clean done.');

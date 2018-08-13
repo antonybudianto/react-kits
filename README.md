@@ -18,6 +18,7 @@ Why not [create-react-app](https://github.com/facebook/create-react-app)?
 - Universal Code-splitting (lazy + eager)
 - Full HMR (Hot module reload)
 - Data prefetching
+- [DLL](https://webpack.js.org/plugins/dll-plugin/) ready for faster rebuild
 
 ## Tech stacks
 |                                                                          	|                                                        	|                                                     	|                                   	|

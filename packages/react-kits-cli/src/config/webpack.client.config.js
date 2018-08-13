@@ -7,11 +7,22 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 
 const { log } = require('../util/log');
 const { generateKitConfig } = require('../util/config');
-const { resolveDir } = require('../util/path');
+const { resolveDir, resolveCwd } = require('../util/path');
 const baseConfig = require('./webpack.base.config');
 const project = require('../config/project.config');
 
 const kitConfig = generateKitConfig(project);
+
+let vendorManifest;
+
+if (process.env.NODE_ENV === 'development') {
+  try {
+    vendorManifest = require(resolveCwd('./dist/vendorDll-manifest.json'));
+    log('DLL ready.');
+  } catch (e) {
+    log('DLL not ready. You can create one by running `react-kits build-dll`.');
+  }
+}
 
 const devMode = project.globals.__DEV__;
 
@@ -61,14 +72,22 @@ const config = {
   },
   plugins: [
     ...(project.globals.__DEV__
-      ? [new webpack.HotModuleReplacementPlugin()]
+      ? [
+          vendorManifest &&
+            new webpack.DllReferencePlugin({
+              context: '.',
+              manifest: vendorManifest
+            }),
+          new webpack.HotModuleReplacementPlugin()
+        ]
       : [
           new ManifestPlugin(),
           new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             openAnalyzer: false
           })
-        ]),
+        ]
+    ).filter(p => p !== undefined),
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[hash].css',
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
