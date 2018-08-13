@@ -14,11 +14,14 @@ const project = require('../config/project.config');
 const kitConfig = generateKitConfig(project);
 
 let vendorManifest;
-try {
-  vendorManifest = require(resolveCwd('./dist/vendorDll-manifest.json'));
-  log('DLL ready.');
-} catch (e) {
-  log('DLL not ready. You can create one by running `react-kits build-dll`.');
+
+if (process.env.NODE_ENV === 'development') {
+  try {
+    vendorManifest = require(resolveCwd('./dist/vendorDll-manifest.json'));
+    log('DLL ready.');
+  } catch (e) {
+    log('DLL not ready. You can create one by running `react-kits build-dll`.');
+  }
 }
 
 const devMode = project.globals.__DEV__;
