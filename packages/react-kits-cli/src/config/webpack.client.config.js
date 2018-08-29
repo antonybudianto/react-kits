@@ -90,7 +90,7 @@ const config = {
         ]
     ).filter(p => p !== undefined),
     new WorkboxPlugin.InjectManifest({
-      swSrc: './src/sw.js',
+      swSrc: './src/service-worker.js',
       // skip app chunk when dev mode
       excludeChunks: project.globals.__DEV__ ? ['app'] : []
     }),
