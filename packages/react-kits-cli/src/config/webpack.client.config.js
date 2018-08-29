@@ -89,11 +89,8 @@ const config = {
           })
         ]
     ).filter(p => p !== undefined),
-    new WorkboxPlugin.GenerateSW({
-      // these options encourage the ServiceWorkers to get in there fast
-      // and not allow any straggling "old" SWs to hang around
-      clientsClaim: true,
-      skipWaiting: true,
+    new WorkboxPlugin.InjectManifest({
+      swSrc: './src/sw.js',
       // skip app chunk when dev mode
       excludeChunks: project.globals.__DEV__ ? ['app'] : []
     }),
