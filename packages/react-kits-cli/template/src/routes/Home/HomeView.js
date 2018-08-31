@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 import { toggleLogin } from '../../reducers/user'
 import './HomeView.scss'
@@ -23,6 +24,14 @@ class HomeView extends Component {
         </div>
         <div className="my2">
           <button onClick={this.props.toggleLogin}>toggle login</button>
+          <Link
+            style={{
+              color: 'white'
+            }}
+            to="/about"
+          >
+            visit About
+          </Link>
         </div>
         <TestView />
       </div>
