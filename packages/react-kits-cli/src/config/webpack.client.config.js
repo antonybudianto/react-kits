@@ -4,6 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
+const WorkboxPlugin = require('workbox-webpack-plugin');
+const fs = require('fs');
 
 const { log } = require('../util/log');
 const { generateKitConfig } = require('../util/config');
@@ -22,6 +24,14 @@ if (process.env.NODE_ENV === 'development') {
   } catch (e) {
     log('DLL not ready. You can create one by running `react-kits build-dll`.');
   }
+}
+
+const swExists = fs.existsSync(resolveCwd('./src/service-worker.js'));
+
+if (swExists) {
+  log('SW ready.');
+} else {
+  log('SW not ready. You can create one by creating `src/service-worker.js`.');
 }
 
 const devMode = project.globals.__DEV__;
@@ -86,13 +96,16 @@ const config = {
             analyzerMode: 'static',
             openAnalyzer: false
           })
-        ]
-    ).filter(p => p !== undefined),
+        ]),
+    swExists &&
+      new WorkboxPlugin.InjectManifest({
+        swSrc: './src/service-worker.js'
+      }),
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[hash].css',
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
     })
-  ],
+  ].filter(p => !!p),
   optimization: {
     splitChunks: {
       cacheGroups: {
