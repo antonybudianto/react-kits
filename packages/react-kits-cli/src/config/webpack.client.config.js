@@ -99,9 +99,7 @@ const config = {
         ]),
     swExists &&
       new WorkboxPlugin.InjectManifest({
-        swSrc: './src/service-worker.js',
-        // skip app chunk when dev mode
-        excludeChunks: project.globals.__DEV__ ? ['app'] : []
+        swSrc: './src/service-worker.js'
       }),
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[hash].css',

@@ -3,7 +3,7 @@
 workbox.precaching.precacheAndRoute(self.__precacheManifest)
 
 var CACHE_NAME = 'my-pwa-cache-v1'
-var urlsToCache = ['/']
+var urlsToCache = ['/', '/about']
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function(cache) {

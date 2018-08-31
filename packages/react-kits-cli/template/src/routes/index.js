@@ -1,11 +1,12 @@
 import { renderRoutes, matchRoutes } from 'react-router-config'
 import { UAParser } from 'ua-parser-js'
 
-import HomeView from './Home'
-import NotFoundPage from './NotFoundPage'
+import HomeRoute from './Home'
+import NotFoundRoute from './NotFoundPage'
+import AboutRoute from './About'
 import { initUserAgent } from '../reducers/user-agent'
 
-const routes = [{ ...HomeView }, { ...NotFoundPage }]
+const routes = [{ ...HomeRoute }, { ...AboutRoute }, { ...NotFoundRoute }]
 
 export const getInitialData = (req, store) => {
   const path = req.path
