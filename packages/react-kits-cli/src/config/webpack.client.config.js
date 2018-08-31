@@ -41,7 +41,7 @@ const config = {
   entry: {
     app: [
       ...(project.globals.__DEV__
-        ? ['webpack-hot-middleware/client?timeout=1000&reload=true']
+        ? ['webpack-hot-middleware/client?reload=true']
         : []),
       project.paths.client('renderer/client')
     ]
