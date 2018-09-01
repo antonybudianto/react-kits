@@ -5,6 +5,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const fs = require('fs');
 
 const { log } = require('../util/log');
@@ -103,6 +104,7 @@ const config = {
       new WorkboxPlugin.InjectManifest({
         swSrc: './src/service-worker.js'
       }),
+    new CopyWebpackPlugin(['public']),
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[hash].css',
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
