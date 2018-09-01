@@ -12,11 +12,12 @@ npm start
 
 You can build DLL cache for faster rebuild in development. Run this only **once** before start or if you've changed **package.json** dependencies. This step is optional, so you can start without DLL cache.
 
-> You might need to hard-refresh to refresh service worker, caches, or HMR hot-updates errors.
-
 ```sh
 npm run dll
 ```
+
+> You might need to hard-refresh to refresh service worker, caches, or HMR hot-updates errors.
+
 
 ### Code style
 
