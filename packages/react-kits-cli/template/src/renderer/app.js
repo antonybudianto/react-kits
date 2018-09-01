@@ -12,7 +12,7 @@ const app = createReactServer({
   createStore,
   getInitialData,
   homePath: HOME_PATH,
-  assetUrl: process.env.APP_ASSET_PATH || '/',
+  assetUrl: process.env.APP_ASSET_PATH,
   customMiddleware: ins => {
     if (__DEV__) {
       const proxy = require('http-proxy-middleware')
