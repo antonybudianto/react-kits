@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 
 const { resolveCwd, pcwd } = require('../util/path');
+const project = require('../config/project.config');
 
 module.exports = {
   context: pcwd,
@@ -20,7 +21,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: resolveCwd('dist'),
+    path: project.paths.dist(),
 
     // The name of the global variable which the library's
     // require() function will be assigned to
@@ -32,7 +33,7 @@ module.exports = {
       // The path to the manifest file which maps between
       // modules included in a bundle and the internal IDs
       // within that bundle
-      path: resolveCwd('dist') + '/[name]-manifest.json',
+      path: project.paths.dist('./[name]-manifest.json'),
       // The name of the global variable which the library's
       // require function has been assigned to. This must match the
       // output.library option above

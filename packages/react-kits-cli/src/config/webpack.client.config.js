@@ -20,7 +20,7 @@ let vendorManifest;
 
 if (process.env.NODE_ENV === 'development') {
   try {
-    vendorManifest = require(resolveCwd('./dist/vendorDll-manifest.json'));
+    vendorManifest = require(project.paths.dist('./vendorDll-manifest.json'));
     log('DLL ready.');
   } catch (e) {
     log('DLL not ready. You can create one by running `react-kits build-dll`.');

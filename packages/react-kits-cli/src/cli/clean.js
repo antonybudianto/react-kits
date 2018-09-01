@@ -1,8 +1,9 @@
 const inquirer = require('inquirer');
 const del = require('del');
 const { log } = require('../util/log');
+const { dir_dist } = require('../config/project.config');
 
-const paths = ['dist'];
+const paths = [dir_dist];
 
 inquirer
   .prompt([

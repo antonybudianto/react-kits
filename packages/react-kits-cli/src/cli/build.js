@@ -4,8 +4,9 @@ const del = require('del');
 const serverConfig = require('../config/webpack.server.config');
 const clientConfig = require('../config/webpack.client.config');
 const { log } = require('../util/log');
+const { dir_dist } = require('../config/project.config');
 
-const paths = ['dist'];
+const paths = [dir_dist];
 
 function cleanBuild(done) {
   del(paths).then(() => {

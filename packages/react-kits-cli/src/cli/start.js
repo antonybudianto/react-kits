@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const del = require('del');
 const { log } = require('../util/log');
+const { dir_dist } = require('../config/project.config');
 
 const isClean = process.argv.slice(2).indexOf('--clean') >= 0;
 
@@ -9,7 +10,7 @@ function cleanBuild() {
     return Promise.resolve();
   }
   log('Cleaning build...');
-  return del(['dist']).then(() => {
+  return del([dir_dist]).then(() => {
     log('Build clean done.');
   });
 }
