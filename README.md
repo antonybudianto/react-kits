@@ -19,6 +19,7 @@ Why not [create-react-app](https://github.com/facebook/create-react-app)?
 - Full HMR (Hot module reload)
 - Data prefetching
 - [DLL](https://webpack.js.org/plugins/dll-plugin/) ready for faster rebuild
+- [PWA](https://developers.google.com/web/progressive-web-apps/) ready
 
 ## Tech stacks
 |                                                                          	|                                                        	|                                                     	|                                   	|
