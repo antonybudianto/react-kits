@@ -51,7 +51,10 @@ npm run serve
 ### Deployment
 
 - First, run the build script with `npm run build`
-- Next, you can copy **dist** folder and **package.json** into a new folder, let's call it **my-app-dist**
+- Next, you can copy the following to new folder:
+  - **dist** folder
+  - **public** folder
+  - **package.json**
 - You can upload that folder into the server and run `npm i --production` inside the folder
 - Run `npm run serve` to boot up the server (this uses Node binary directly, you can use proper Node process manager as you wish)
 

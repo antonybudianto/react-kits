@@ -16,6 +16,7 @@ class App extends Component {
           <meta name="description" content="React App" />
           <meta property="og:title" content="React App" />
           <meta property="og:description" content="React App" />
+          <meta name="theme-color" content="#000000" />
         </Helmet>
         <div>{renderAppRoutes()}</div>
       </div>

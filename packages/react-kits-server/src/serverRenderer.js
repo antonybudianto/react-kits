@@ -81,6 +81,8 @@ export default async ({
     ${helmet.meta.toString()}
     ${vendorStyleTag}
     ${appStyleTag}
+    <link rel="manifest" href="${assetUrl}manifest.json">
+    <link rel="shortcut icon" href="${assetUrl}favicon.ico">
     ${helmet.link.toString()}
   </head>
   <body>

@@ -91,7 +91,9 @@ const config = {
           new webpack.HotModuleReplacementPlugin()
         ]
       : [
-          new ManifestPlugin(),
+          new ManifestPlugin({
+            fileName: 'build-manifest.json'
+          }),
           new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             openAnalyzer: false

@@ -34,6 +34,7 @@ export function createReactServer(config) {
   customMiddleware(app);
 
   app.use(homePath, express.static('dist'));
+  app.use(homePath, express.static('public'));
 
   app.get(homePath + '(*)', (req, res) => {
     const store = createStore();

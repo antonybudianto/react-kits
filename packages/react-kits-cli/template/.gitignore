@@ -1,6 +1,5 @@
 node_modules
 build
-public
 dist
 .env
 yarn-error.log
