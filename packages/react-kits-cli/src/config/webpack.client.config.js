@@ -41,9 +41,7 @@ const config = {
   devtool: project.globals.__PROD__ ? false : 'cheap-module-eval-source-map',
   entry: {
     app: [
-      ...(project.globals.__DEV__
-        ? ['webpack-hot-middleware/client?reload=true']
-        : []),
+      ...(project.globals.__DEV__ ? ['webpack-hot-middleware/client'] : []),
       project.paths.client('renderer/client')
     ]
   },
