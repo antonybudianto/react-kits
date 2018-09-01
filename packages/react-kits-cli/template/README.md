@@ -16,6 +16,26 @@ You can build DLL cache for faster rebuild in development. Run this only **once*
 npm run dll
 ```
 
+### Code style
+
+#### Linting
+```
+npm run lint
+```
+
+#### Prettier
+```
+npm run prettier
+```
+
+## Testing
+
+```
+npm test
+```
+
+## Build and deployment
+
 ### Build
 
 ```
