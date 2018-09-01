@@ -12,7 +12,7 @@ test('should generate from manifest correctly', () => {
     res: {}
   };
   spy = jest.spyOn(path, 'resolve').mockImplementation((...a) => {
-    if (a[1] === 'dist/manifest.json') return './mocks/mockManifest.json';
+    if (a[1] === 'dist/build-manifest.json') return './mocks/mockManifest.json';
     return pathResolveOri(...a);
   });
   const data = generateAssets({ expressCtx, assetUrl: '/' });
@@ -28,7 +28,8 @@ test('should generate from manifest correctly - with css', () => {
     res: {}
   };
   spy.mockImplementation((...a) => {
-    if (a[1] === 'dist/manifest.json') return './mocks/mockManifestCss.json';
+    if (a[1] === 'dist/build-manifest.json')
+      return './mocks/mockManifestCss.json';
     return pathResolveOri(...a);
   });
   const data = generateAssets({ expressCtx, assetUrl: '/' });

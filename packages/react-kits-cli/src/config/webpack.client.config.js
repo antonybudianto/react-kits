@@ -5,6 +5,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const fs = require('fs');
 
 const { log } = require('../util/log');
@@ -19,7 +20,7 @@ let vendorManifest;
 
 if (process.env.NODE_ENV === 'development') {
   try {
-    vendorManifest = require(resolveCwd('./dist/vendorDll-manifest.json'));
+    vendorManifest = require(project.paths.dist('./vendorDll-manifest.json'));
     log('DLL ready.');
   } catch (e) {
     log('DLL not ready. You can create one by running `react-kits build-dll`.');
@@ -40,9 +41,7 @@ const config = {
   devtool: project.globals.__PROD__ ? false : 'cheap-module-eval-source-map',
   entry: {
     app: [
-      ...(project.globals.__DEV__
-        ? ['webpack-hot-middleware/client?reload=true']
-        : []),
+      ...(project.globals.__DEV__ ? ['webpack-hot-middleware/client'] : []),
       project.paths.client('renderer/client')
     ]
   },
@@ -91,7 +90,9 @@ const config = {
           new webpack.HotModuleReplacementPlugin()
         ]
       : [
-          new ManifestPlugin(),
+          new ManifestPlugin({
+            fileName: 'build-manifest.json'
+          }),
           new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             openAnalyzer: false
@@ -101,6 +102,7 @@ const config = {
       new WorkboxPlugin.InjectManifest({
         swSrc: './src/service-worker.js'
       }),
+    new CopyWebpackPlugin(['public']),
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[hash].css',
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css'

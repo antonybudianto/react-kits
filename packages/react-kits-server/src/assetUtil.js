@@ -36,7 +36,7 @@ export function generateAssets({ expressCtx, assetUrl }) {
   } else {
     const path = require('path');
     const cwd = process.cwd();
-    const manifest = require(path.resolve(cwd, 'dist/manifest.json'));
+    const manifest = require(path.resolve(cwd, 'dist/build-manifest.json'));
     vendor = manifest['vendor.js'];
     app = manifest['app.js'];
     appStyle = manifest['app.css'];
