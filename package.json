@@ -16,8 +16,9 @@
     "release": "lerna publish",
     "release:next": "npm run release -- --npm-tag=next",
     "exec:server": "lerna exec --scope react-kits-server --",
-    "temp:start": "lerna run --parallel start --scope=~~name~~",
-    "temp:lint": "lerna run --parallel lint --scope=~~name~~"
+    "exec:temp": "lerna exec --scope=~~name~~ --",
+    "temp:start": "npm run exec:temp npm start",
+    "temp:lint": "npm run exec:temp npm run lint"
   },
   "repository": {
     "type": "git",
