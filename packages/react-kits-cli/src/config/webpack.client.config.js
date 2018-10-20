@@ -101,6 +101,9 @@ const config = {
         ]),
     swReady &&
       new OfflinePlugin({
+        ServiceWorker: {
+          events: true
+        },
         appShell: '/?shell',
         externals: [
           '/?shell',
