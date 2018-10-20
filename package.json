@@ -18,6 +18,7 @@
     "exec:server": "lerna exec --scope react-kits-server --",
     "exec:temp": "lerna exec --scope=~~name~~ --",
     "temp:start": "npm run exec:temp npm start",
+    "temp:build": "npm run exec:temp npm run build",
     "temp:lint": "npm run exec:temp npm run lint"
   },
   "repository": {

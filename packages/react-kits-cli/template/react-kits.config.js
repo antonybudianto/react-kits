@@ -1,3 +1,5 @@
 module.exports = {
-  config: () => ({})
+  config: () => ({
+    swReady: true
+  })
 }

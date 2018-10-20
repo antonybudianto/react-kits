@@ -4,13 +4,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
-const WorkboxPlugin = require('workbox-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const fs = require('fs');
+const OfflinePlugin = require('offline-plugin');
 
 const { log } = require('../util/log');
 const { generateKitConfig } = require('../util/config');
-const { resolveDir, resolveCwd } = require('../util/path');
+const { resolveDir } = require('../util/path');
 const baseConfig = require('./webpack.base.config');
 const project = require('../config/project.config');
 
@@ -27,12 +26,14 @@ if (process.env.NODE_ENV === 'development') {
   }
 }
 
-const swExists = fs.existsSync(resolveCwd('./src/service-worker.js'));
+const swReady = kitConfig.swReady;
 
-if (swExists) {
+if (swReady) {
   log('SW ready.');
 } else {
-  log('SW not ready. You can create one by creating `src/service-worker.js`.');
+  log(
+    'SW not ready. You can add `swReady: true` in your `react-kits.config.js`.'
+  );
 }
 
 const devMode = project.globals.__DEV__;
@@ -98,9 +99,13 @@ const config = {
             openAnalyzer: false
           })
         ]),
-    swExists &&
-      new WorkboxPlugin.InjectManifest({
-        swSrc: './src/service-worker.js'
+    swReady &&
+      new OfflinePlugin({
+        appShell: '/?shell',
+        externals: [
+          '/?shell',
+          ...[vendorManifest && '/vendorDll.js'].filter(p => !!p)
+        ]
       }),
     new CopyWebpackPlugin(['public']),
     new MiniCssExtractPlugin({

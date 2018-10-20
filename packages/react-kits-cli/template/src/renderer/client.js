@@ -2,7 +2,7 @@ import 'babel-polyfill'
 import 'raf/polyfill'
 
 import React from 'react'
-import { hydrate } from 'react-dom'
+import { hydrate, render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { loadComponents } from 'loadable-components'
@@ -13,8 +13,9 @@ import App from '../App'
 import 'basscss/css/basscss.css'
 const store = createClientStore(window.INITIAL_STATE)
 
-function render(MyApp) {
-  hydrate(
+function renderApp(MyApp) {
+  const boot = window.__shell__ ? render : hydrate
+  boot(
     <HelmetProvider>
       <Provider store={store}>
         <BrowserRouter>
@@ -27,18 +28,7 @@ function render(MyApp) {
 }
 
 loadComponents().then(() => {
-  render(App)
+  renderApp(App)
 })
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register('/service-worker.js')
-      .then(() => {
-        console.log('SW registered: ')
-      })
-      .catch(registrationError => {
-        console.log('SW registration failed: ', registrationError)
-      })
-  })
-}
+require('offline-plugin/runtime').install()

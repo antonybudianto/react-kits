@@ -52,6 +52,30 @@ export default async ({
     }
   }
 
+  if (req.query.shell !== undefined) {
+    return `<!doctype html>
+    <html>
+    <head>
+      <meta name="mobile-web-app-capable" content="yes">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+      ${vendorStyleTag}
+      ${appStyleTag}
+      <link rel="manifest" href="${assetUrl}manifest.json">
+      <link rel="shortcut icon" href="${assetUrl}favicon.ico">
+    </head>
+    <body>
+      <div id='root'></div>
+      <script>
+        window.__LOADABLE_STATE__ = {};
+        window.__shell__ = true;
+      </script>
+      ${dllScript}
+      <script src='${vendor}'></script>
+      <script src='${app}'></script>
+    </body>
+    </html>`;
+  }
+
   const elementData = onRender({ expressCtx });
   const promiseOfEl =
     elementData instanceof Promise ? elementData : Promise.resolve(elementData);
