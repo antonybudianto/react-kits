@@ -1,6 +1,6 @@
 {
   "name": "react-kits",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "React dev kits",
   "main": "src/index.js",
   "bin": {
@@ -50,6 +50,7 @@
     "mini-css-extract-plugin": "^0.4.1",
     "node-sass": "^4.9.2",
     "null-loader": "^0.1.1",
+    "offline-plugin": "5.0.5",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "react-hot-loader": "^4.3.3",
     "recursive-copy": "^2.0.9",
@@ -66,7 +67,6 @@
     "webpack-hot-middleware": "^2.22.3",
     "webpack-manifest-plugin": "^2.0.3",
     "webpack-merge": "^4.1.3",
-    "offline-plugin": "5.0.5",
     "webpack-node-externals": "^1.7.2",
     "yargs": "^12.0.1",
     "yarn-install": "^1.0.0"
