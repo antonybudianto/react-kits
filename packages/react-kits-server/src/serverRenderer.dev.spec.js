@@ -27,7 +27,9 @@ jest.mock('./assetUtil.js', () => {
 test('works with minimum setup', done => {
   serverRenderer({
     expressCtx: {
-      req: {},
+      req: {
+        query: {}
+      },
       res: {
         locals: {
           webpackStats: {
@@ -63,7 +65,9 @@ test('works with minimum setup - with DLL', done => {
   });
   serverRenderer({
     expressCtx: {
-      req: {},
+      req: {
+        query: {}
+      },
       res: {
         locals: {
           webpackStats: {
@@ -94,7 +98,9 @@ test('works with minimum setup - with DLL', done => {
 test('works with no style', done => {
   serverRenderer({
     expressCtx: {
-      req: {},
+      req: {
+        query: {}
+      },
       res: {
         locals: {
           webpackStats: {
@@ -124,7 +130,9 @@ test('works with no style', done => {
 test('async onRender', done => {
   serverRenderer({
     expressCtx: {
-      req: {},
+      req: {
+        query: {}
+      },
       res: {
         locals: {
           webpackStats: {

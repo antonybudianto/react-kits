@@ -13,15 +13,35 @@ class HomeView extends Component {
     toggleLogin: PropTypes.func
   }
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      text: ''
+    }
+  }
+
+  componentDidMount() {
+    fetch('/api/hello')
+      .then(r => r.json())
+      .then(data => {
+        this.setState({
+          text: data.text
+        })
+      })
+      .catch(err => {
+        console.error(err)
+        this.setState({
+          text: 'Error fetch data'
+        })
+      })
+  }
+
   render() {
     return (
       <div className="home-view">
-        <div className="my2">
-          home view (change HomeView.js and states should not be reset)
-        </div>
-        <div>
-          user: {this.props.user.isLoggedIn ? 'loggedIn' : 'notLoggedIn'}
-        </div>
+        <div className="my2">home view (change HomeView.js and states should not be reset)</div>
+        <div>user: {this.props.user.isLoggedIn ? 'loggedIn' : 'notLoggedIn'}</div>
         <div className="my2">
           <button onClick={this.props.toggleLogin}>toggle login</button>
           <Link
@@ -34,6 +54,7 @@ class HomeView extends Component {
           </Link>
         </div>
         <TestView />
+        <div>Fetch hello api: {this.state.text}</div>
       </div>
     )
   }

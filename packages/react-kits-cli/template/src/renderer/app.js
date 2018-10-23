@@ -16,11 +16,17 @@ const app = createReactServer({
   customMiddleware: ins => {
     if (__DEV__) {
       const proxy = require('http-proxy-middleware')
-      const backendUrl = process.env.APP_BACKEND_URL || 'https://api.myapp.com'
+      const backendUrl = process.env.APP_BACKEND_URL || 'https://www.myapp.com'
       console.log('APP_BACKEND_URL = ' + backendUrl)
 
+      ins.get('/api/hello', (req, res) => {
+        res.json({
+          text: 'Hello world'
+        })
+      })
+
       ins.use(
-        ['/microfinance'],
+        ['/api'],
         proxy({
           secure: false,
           target: backendUrl,
