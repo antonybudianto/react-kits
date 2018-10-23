@@ -15,7 +15,9 @@ const serverRenderer = require('./serverRenderer').default;
 test('works with minimum setup', done => {
   serverRenderer({
     expressCtx: {
-      req: {},
+      req: {
+        query: {}
+      },
       res: {}
     },
     context: {},
@@ -27,6 +29,31 @@ test('works with minimum setup', done => {
     onRender: () => <div>test123</div>
   }).then(str => {
     expect(str).toMatch(/test123/);
+    expect(str).toMatch(/apptmp\.js/);
+    expect(str).toMatch(/vendortmp\.js/);
+    done();
+  });
+});
+
+test('works with minimum setup - with shell', done => {
+  serverRenderer({
+    expressCtx: {
+      req: {
+        query: {
+          shell: true
+        }
+      },
+      res: {}
+    },
+    context: {},
+    store: {
+      dispatch: jest.fn(),
+      subscribe: jest.fn(),
+      getState: jest.fn()
+    },
+    onRender: () => <div>test123</div>
+  }).then(str => {
+    expect(str).toMatch(/window\.__shell__ = true/);
     expect(str).toMatch(/apptmp\.js/);
     expect(str).toMatch(/vendortmp\.js/);
     done();
