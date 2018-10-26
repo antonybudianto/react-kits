@@ -1,6 +1,6 @@
 {
   "app.js": "mock/app.js",
-  "vendor.js": "mock/vendor.js",
+  "vendor~app.js": "mock/vendor.js",
   "app.css": "mock/app.css",
-  "vendor.css": "mock/vendor.css"
+  "vendor~app.css": "mock/vendor.css"
 }
