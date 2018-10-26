@@ -6,6 +6,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
+const path = require('path');
 
 const { log } = require('../util/log');
 const { generateKitConfig } = require('../util/config');
@@ -26,14 +27,16 @@ if (process.env.NODE_ENV === 'development') {
   }
 }
 
-const swReady = kitConfig.swReady;
+let sw = kitConfig.sw;
 
-if (swReady) {
+if (sw) {
   log('SW ready.');
+  const swDefault = {
+    homePath: '/'
+  };
+  sw = { ...swDefault, sw };
 } else {
-  log(
-    'SW not ready. You can add `swReady: true` in your `react-kits.config.js`.'
-  );
+  log('SW not ready. You can add `sw: true` in your `react-kits.config.js`.');
 }
 
 const devMode = project.globals.__DEV__;
@@ -99,15 +102,17 @@ const config = {
             openAnalyzer: false
           })
         ]),
-    swReady &&
+    sw &&
       new OfflinePlugin({
         ServiceWorker: {
           events: true
         },
-        appShell: '/?shell',
+        appShell: path.join(sw.homePath, '?shell'),
         externals: [
-          '/?shell',
-          ...[vendorManifest && '/vendorDll.js'].filter(p => !!p)
+          path.join(sw.homePath, '?shell'),
+          ...[vendorManifest && path.join(sw.homePath, 'vendorDll.js')].filter(
+            p => !!p
+          )
         ]
       }),
     new CopyWebpackPlugin(['public']),
