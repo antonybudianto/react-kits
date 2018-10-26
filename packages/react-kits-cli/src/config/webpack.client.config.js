@@ -119,11 +119,12 @@ const config = {
   optimization: {
     splitChunks: {
       cacheGroups: {
-        default: false,
-        commons: {
-          test: /[\\/]node_modules[\\/].+\.js$/,
-          name: 'vendor',
-          chunks: 'all'
+        vendor: {
+          test: /node_modules/,
+          chunks: 'initial',
+          filename: project.globals.__DEV__
+            ? 'vendor.js'
+            : 'vendor.[chunkhash].js'
         }
       }
     }

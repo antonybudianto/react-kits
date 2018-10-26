@@ -22,11 +22,11 @@ export function generateAssets({ expressCtx, assetUrl }) {
     devAssets.appCss = normalizeAssets(assetsByChunkName.app).find(f =>
       /^app(\.[a-z0-9]+)?\.css$/.test(f)
     );
-    devAssets.vendorJs = normalizeAssets(assetsByChunkName.vendor).find(f =>
-      /^vendor(\.[a-z0-9]+)?\.js$/.test(f)
+    devAssets.vendorJs = normalizeAssets(assetsByChunkName['vendor~app']).find(
+      f => /^vendor(\.[a-z0-9]+)?\.js$/.test(f)
     );
-    devAssets.vendorCss = normalizeAssets(assetsByChunkName.vendor).find(f =>
-      /^vendor(\.[a-z0-9]+)?\.css$/.test(f)
+    devAssets.vendorCss = normalizeAssets(assetsByChunkName['vendor~app']).find(
+      f => /^vendor(\.[a-z0-9]+)?\.css$/.test(f)
     );
 
     vendor = assetUrl + devAssets.vendorJs;
@@ -37,10 +37,10 @@ export function generateAssets({ expressCtx, assetUrl }) {
     const path = require('path');
     const cwd = process.cwd();
     const manifest = require(path.resolve(cwd, 'dist/build-manifest.json'));
-    vendor = manifest['vendor.js'];
+    vendor = manifest['vendor~app.js'];
     app = manifest['app.js'];
     appStyle = manifest['app.css'];
-    vendorStyle = manifest['vendor.css'];
+    vendorStyle = manifest['vendor~app.css'];
   }
 
   return {

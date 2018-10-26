@@ -1,4 +1,4 @@
 {
   "app.js": "mock/app.js",
-  "vendor.js": "mock/vendor.js"
+  "vendor~app.js": "mock/vendor.js"
 }

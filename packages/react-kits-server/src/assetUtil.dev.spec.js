@@ -16,7 +16,7 @@ test('should generate from manifest correctly', () => {
           toJson: () => ({
             assetsByChunkName: {
               app: ['app.js'],
-              vendor: ['vendor.js']
+              'vendor~app': ['vendor.js']
             }
           })
         }
@@ -39,7 +39,7 @@ test('should generate from manifest correctly - with css', () => {
           toJson: () => ({
             assetsByChunkName: {
               app: ['app.js', 'app.css'],
-              vendor: ['vendor.js', 'vendor.css']
+              'vendor~app': ['vendor.js', 'vendor.css']
             }
           })
         }
@@ -62,7 +62,7 @@ test('should generate from manifest correctly - with non array assets', () => {
           toJson: () => ({
             assetsByChunkName: {
               app: 'app.js',
-              vendor: 'vendor.js'
+              'vendor~app': 'vendor.js'
             }
           })
         }
