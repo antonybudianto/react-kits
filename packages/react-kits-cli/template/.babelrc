@@ -3,9 +3,7 @@
     [
       "@babel/preset-env",
       {
-        "targets": {
-          "browsers": ["last 2 versions"]
-        }
+        "useBuiltIns": "entry"
       }
     ],
     "@babel/preset-react"
