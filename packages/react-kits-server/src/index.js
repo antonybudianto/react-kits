@@ -52,8 +52,8 @@ export function createReactServer(config) {
           template
         };
         return serverRender(data).then(html => {
-          if (context.status === 404) {
-            return res.status(404).send(html);
+          if (context.status) {
+            return res.status(context.status).send(html);
           }
           if (context.url) {
             return res.redirect(302, context.url);
