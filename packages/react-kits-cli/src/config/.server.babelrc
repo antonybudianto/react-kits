@@ -1,7 +1,7 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
         "modules": false,
         "targets": {
@@ -9,12 +9,11 @@
         }
       }
     ],
-    "react",
-    "stage-3"
+    "@babel/preset-react"
   ],
   "plugins": [
     "babel-plugin-dynamic-import-node",
-    "transform-class-properties",
+    "@babel/plugin-proposal-class-properties",
     "loadable-components/babel"
   ]
 }
