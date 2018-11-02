@@ -10,6 +10,11 @@
     "jest/globals": true,
     "browser": true
   },
+  "settings": {
+    "react": {
+      "version": "16.0"
+    }
+  },
   "globals": {
     "__DEV__": false,
     "__STAG__": false,
