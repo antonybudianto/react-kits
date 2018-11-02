@@ -16,7 +16,6 @@ let vendorStyle;
 const fs = require('fs');
 const path = require('path');
 const cwd = process.cwd();
-const pcwd = path.resolve(cwd);
 function resolveCwd(name) {
   return path.resolve(cwd, name);
 }
