@@ -54,6 +54,13 @@
     }
   },
   "author": "User",
+  "browserslist": [
+    "> 1% in ID",
+    "last 2 versions",
+    "Firefox ESR",
+    "iOS >= 9",
+    "not ie < 11"
+  ],
   "jest": {
     "testURL": "http://localhost",
     "globals": {
