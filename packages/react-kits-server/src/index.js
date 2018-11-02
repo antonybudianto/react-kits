@@ -40,9 +40,12 @@ export function createReactServer(config) {
     // attach cookies to store object as a way to let cookies to be passed into server fetching
     req.headers.cookie && (store['cookies'] = req.headers.cookie);
     const promises = getInitialData(req, store);
-    Promise.all(promises)
-      .finally(() => {
-        let context = {};
+    let context = {};
+    const iniDataPromise = Promise.all(promises).catch(err =>
+      console.error('Error getInitialData:\n', err)
+    );
+    iniDataPromise
+      .then(() => {
         const data = {
           expressCtx: { req, res },
           store,
@@ -51,18 +54,20 @@ export function createReactServer(config) {
           assetUrl,
           template
         };
-        return serverRender(data).then(html => {
-          if (context.status === 404) {
-            return res.status(404).send(html);
-          }
-          if (context.url) {
-            return res.redirect(302, context.url);
-          }
-          res.send(html);
-        });
+        return serverRender(data);
+      })
+      .then(html => {
+        if (context.status) {
+          return res.status(context.status).send(html);
+        }
+        if (context.url) {
+          return res.redirect(302, context.url);
+        }
+        res.send(html);
       })
       .catch(err => {
-        console.error('Error getInitialData:\n', err);
+        console.error('Error serverRender:\n', err);
+        res.sendStatus(500);
       });
   });
 
