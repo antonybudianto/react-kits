@@ -1,6 +1,6 @@
 {
   "name": "react-kits",
-  "version": "3.0.0-alpha.0",
+  "version": "3.0.0-alpha.1",
   "description": "React dev kits",
   "main": "src/index.js",
   "bin": {
@@ -29,13 +29,13 @@
   "homepage": "https://github.com/antonybudianto/react-kits#readme",
   "dependencies": {
     "@babel/core": "^7.1.2",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.4",
-    "babel-plugin-dynamic-import-node": "^2.2.0",
     "@babel/plugin-proposal-class-properties": "7.1.0",
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-dynamic-import-node": "^2.2.0",
     "chalk": "^2.4.1",
     "copy-webpack-plugin": "4.5.2",
     "css-loader": "^1.0.0",
