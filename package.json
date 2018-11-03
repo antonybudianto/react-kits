@@ -26,10 +26,15 @@
     "url": "git+https://github.com/antonybudianto/react-kits.git"
   },
   "homepage": "https://github.com/antonybudianto/react-kits#readme",
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
+  },
   "devDependencies": {
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "jest": "^23.4.2",
+    "@babel/core": "7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "7.0.0-bridge.0",
+    "jest": "^23.6.0",
     "lerna": "^3.2.1"
   }
 }

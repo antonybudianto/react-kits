@@ -1,20 +1,17 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
         "modules": false,
-        "targets": {
-          "browsers": ["last 2 versions"]
-        }
+        "useBuiltIns": "entry"
       }
     ],
-    "react",
-    "stage-3"
+    "@babel/preset-react"
   ],
   "plugins": [
     "react-hot-loader/babel",
-    "transform-class-properties",
+    "@babel/plugin-proposal-class-properties",
     "loadable-components/babel"
   ]
 }
