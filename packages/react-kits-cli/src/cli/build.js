@@ -31,7 +31,6 @@ function build(label, config) {
       const info = stats.toJson();
 
       if (stats.hasErrors()) {
-        log('>> sss');
         console.error(info.errors);
         reject(info.errors);
       }
