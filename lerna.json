@@ -4,5 +4,6 @@
     "packages/*",
     "packages/react-kits-cli/template"
   ],
+  "npmClient": "yarn",
   "version": "3.0.0-alpha.2"
 }
