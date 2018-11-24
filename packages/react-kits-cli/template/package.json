@@ -100,9 +100,11 @@
   },
   "devDependencies": {
     "http-proxy-middleware": "^0.18.0",
-    "jest": "^23.1.0",
+    "jest": "23.6.0",
     "prettier": "1.13.7",
     "react-kits": "^3.0.0-alpha.2",
-    "webpack-hot-middleware": "^2.22.2"
+    "webpack-hot-middleware": "^2.22.2",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "23.6.0"
   }
 }

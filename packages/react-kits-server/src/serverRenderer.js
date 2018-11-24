@@ -31,7 +31,7 @@ export default async ({
   }
 }) => {
   const { req, res } = expressCtx;
-  const reqPath = req.path;
+  const reqUrl = req.url;
   const assetData = generateAssets({ expressCtx, assetUrl });
   vendor = assetData.vendor;
   app = assetData.app;
@@ -84,7 +84,7 @@ export default async ({
   const rootEl = (
     <HelmetProvider context={helmetCtx}>
       <Provider store={store}>
-        <StaticRouter location={reqPath} context={context}>
+        <StaticRouter location={reqUrl} context={context}>
           {appEl}
         </StaticRouter>
       </Provider>
