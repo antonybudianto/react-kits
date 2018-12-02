@@ -5,8 +5,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
-const path = require('path');
+const { GenerateSW } = require('workbox-webpack-plugin');
 
 const { log } = require('../util/log');
 const { generateKitConfig } = require('../util/config');
@@ -34,7 +33,7 @@ if (sw) {
   const swDefault = {
     homePath: '/'
   };
-  sw = { ...swDefault, sw };
+  sw = { ...swDefault, ...sw };
 } else {
   log('SW not ready. You can add `sw: true` in your `react-kits.config.js`.');
 }
@@ -103,16 +102,26 @@ const config = {
           })
         ]),
     sw &&
-      new OfflinePlugin({
-        ServiceWorker: {
-          events: true
+      new GenerateSW({
+        swDest: 'service-worker.js',
+        clientsClaim: true,
+        skipWaiting: true,
+        navigateFallback: sw.homePath + '?shell',
+        include: [/vendor.*\.js$/, /app.*\.js$/, /app.*\.css$/],
+        templatedUrls: {
+          [sw.homePath + '?shell']: 'app-shell-v' + Date.now()
         },
-        appShell: path.join(sw.homePath, '?shell'),
-        externals: [
-          path.join(sw.homePath, '?shell'),
-          ...[vendorManifest && path.join(sw.homePath, 'vendorDll.js')].filter(
-            p => !!p
-          )
+        runtimeCaching: [
+          {
+            urlPattern: new RegExp(`${sw.homePath}`),
+            handler: 'staleWhileRevalidate',
+            options: {
+              cacheableResponse: {
+                statuses: [200]
+              },
+              cacheName: 'rkit-assets-runtime'
+            }
+          }
         ]
       }),
     new CopyWebpackPlugin(['public']),

@@ -18,6 +18,10 @@ const app = createReactServer({
     const backendUrl = process.env.APP_BACKEND_URL || 'https://www.myapp.com'
     console.log('APP_BACKEND_URL = ' + backendUrl)
 
+    ins.get('/', (req, res) => {
+      res.redirect(HOME_PATH)
+    })
+
     ins.get('/api/hello', (req, res) => {
       res.json({
         text: 'Hello world'

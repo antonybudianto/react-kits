@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { toggleLogin } from '../../reducers/user'
 import './HomeView.scss'
 import TestView from './TestView'
+import { ABOUT_PATH } from '../../constant/url'
 
 class HomeView extends Component {
   static propTypes = {
@@ -48,7 +49,7 @@ class HomeView extends Component {
             style={{
               color: 'white'
             }}
-            to="/about"
+            to={ABOUT_PATH}
           >
             visit About
           </Link>
