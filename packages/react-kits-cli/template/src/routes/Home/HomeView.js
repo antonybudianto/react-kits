@@ -41,7 +41,7 @@ class HomeView extends Component {
   render() {
     return (
       <div className="home-view">
-        <div className="my2">home superjono view (change HomeView.js and states should not be reset)</div>
+        <div className="my2">home view (change HomeView.js and states should not be reset)</div>
         <div>user: {this.props.user.isLoggedIn ? 'loggedIn' : 'notLoggedIn'}</div>
         <div className="my2">
           <button onClick={this.props.toggleLogin}>toggle login</button>
