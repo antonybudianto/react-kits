@@ -1,8 +1,9 @@
 import loadable from 'loadable-components'
+import { ABOUT_PATH } from '../../constant/url'
 
 const AboutView = loadable(() => import('./AboutView'))
 
 export default {
-  path: '/about',
+  path: ABOUT_PATH,
   component: AboutView
 }

@@ -21,7 +21,8 @@
       "command": "react-kits start",
       "env": {
         "NODE_ENV": "development",
-        "APP_ENV": "development"
+        "APP_ENV": "development",
+        "APP_ASSET_PATH": "/myapp/"
       }
     },
     "serve": {
@@ -42,14 +43,16 @@
       "command": "react-kits build",
       "env": {
         "NODE_ENV": "production",
-        "APP_ENV": "staging"
+        "APP_ENV": "staging",
+        "APP_ASSET_PATH": "/myapp/"
       }
     },
     "build:prod": {
       "command": "react-kits build",
       "env": {
         "NODE_ENV": "production",
-        "APP_ENV": "production"
+        "APP_ENV": "production",
+        "APP_ASSET_PATH": "/myapp/"
       }
     }
   },
