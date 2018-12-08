@@ -1,6 +1,6 @@
 {
   "name": "react-kits-server",
-  "version": "3.0.0-alpha.2",
+  "version": "3.0.0-alpha.3",
   "description": "Express server for react-kits",
   "source": "src/index.js",
   "main": "lib/index.js",
@@ -46,7 +46,7 @@
     "react": "*",
     "react-dom": "*",
     "react-helmet-async": "0.1.0",
-    "react-kits": "^3.0.0-alpha.2",
+    "react-kits": "^3.0.0-alpha.3",
     "react-router-dom": "*",
     "redux": "*"
   }
