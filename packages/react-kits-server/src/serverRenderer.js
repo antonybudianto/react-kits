@@ -102,11 +102,14 @@ export default async ({
   </head>
   <body>
     <div id='root'>${content}</div>
-    ${[helmetScript, template.renderBottom({ expressCtx, store })]
-      .filter(s => s !== '')
-      .join('\n')}
     <script type="text/javascript">window.__shell__ = ${shell};</script>
-    ${[initScript, loadableState.getScriptTag(), dllScript]
+    ${[
+      initScript,
+      helmetScript,
+      template.renderBottom({ expressCtx, store }),
+      loadableState.getScriptTag(),
+      dllScript
+    ]
       .filter(s => s !== '')
       .join('\n')}
     <script type="text/javascript" src='${vendor}'></script>
