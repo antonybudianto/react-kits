@@ -2950,6 +2950,13 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
+react-ua@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-ua/-/react-ua-0.2.0.tgz#9131585f78811e6a1d39de84ea37c9dc55965c06"
+  integrity sha512-VU0Iv6zxM4d5UeGA8k2U6alPHT349+v6q7/UgCWWacRtsPU+NdUAygLcX9ChgJVG6F93BuIp8n91bjkgA5pdrA==
+  dependencies:
+    ua-parser-js "0.7.19"
+
 react@16.4.1:
   version "16.4.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.4.1.tgz#de51ba5764b5dbcd1f9079037b862bd26b82fe32"
@@ -3588,6 +3595,11 @@ type-check@~0.3.2:
 ua-parser-js@0.7.18, ua-parser-js@^0.7.9:
   version "0.7.18"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.18.tgz#a7bfd92f56edfb117083b69e31d2aa8882d4b1ed"
+
+ua-parser-js@0.7.19:
+  version "0.7.19"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.19.tgz#94151be4c0a7fb1d001af7022fdaca4642659e4b"
+  integrity sha512-T3PVJ6uz8i0HzPxOF9SWzWAlfN/DavlpQqepn22xgve/5QecC+XMCAtmUNnY7C9StehaV6exjUCI801lOI7QlQ==
 
 uglify-js@^2.6:
   version "2.8.29"

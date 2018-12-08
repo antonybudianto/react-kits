@@ -2,6 +2,7 @@ import '@babel/polyfill'
 import React from 'react'
 
 import { createReactServer } from 'react-kits-server'
+import { UserAgentProvider } from 'react-ua'
 
 import createStore from '../createStore'
 import { getInitialData } from '../routes'
@@ -38,7 +39,11 @@ const app = createReactServer({
       })
     )
   },
-  onRender: () => <App />
+  onRender: ctx => (
+    <UserAgentProvider value={ctx.expressCtx.req.headers['user-agent']}>
+      <App />
+    </UserAgentProvider>
+  )
 })
 
 if (module.hot) {

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import { UserAgent } from 'react-ua'
 
 import { toggleLogin } from '../../reducers/user'
 import './HomeView.scss'
@@ -55,6 +56,7 @@ class HomeView extends Component {
           </Link>
         </div>
         <TestView />
+        <UserAgent>{ua => <div>OS: {ua.os.name}</div>}</UserAgent>
         <div>Fetch hello api: {this.state.text}</div>
       </div>
     )
