@@ -51,29 +51,7 @@ export default async ({
     }
   }
 
-  if (req.query['rkit-shell'] !== undefined) {
-    return `<!doctype html>
-    <html>
-    <head>
-      <meta name="mobile-web-app-capable" content="yes">
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-      ${vendorStyleTag}
-      ${appStyleTag}
-      <link rel="manifest" href="${assetUrl}manifest.json">
-      <link rel="shortcut icon" href="${assetUrl}favicon.ico">
-    </head>
-    <body>
-      <div id='root'></div>
-      <script>
-        window.__LOADABLE_STATE__ = {};
-        window.__shell__ = true;
-      </script>
-      ${dllScript}
-      <script src='${vendor}'></script>
-      <script src='${app}'></script>
-    </body>
-    </html>`;
-  }
+  const shell = typeof expressCtx.req.query['rkit-shell'] !== 'undefined';
 
   const elementData = onRender({ expressCtx });
   const promiseOfEl =
@@ -92,31 +70,47 @@ export default async ({
   );
 
   const loadableState = await getLoadableState(rootEl);
-  const content = renderToString(rootEl);
+  let content = renderToString(rootEl);
   const { helmet } = helmetCtx;
+
+  let helmetTitle = helmet.title.toString();
+  let helmetMeta = helmet.meta.toString();
+  let helmetLink = helmet.link.toString();
+  let helmetScript = helmet.script.toString();
+  let initScript = `<script type="text/javascript">window.INITIAL_STATE = ${serialize(
+    store.getState()
+  )};</script>`;
+
+  if (shell) {
+    content = '';
+    helmetTitle = '';
+    helmetLink = '';
+    helmetMeta = '';
+    helmetScript = '';
+    initScript = '';
+  }
 
   return `<!doctype html>
   <html>
   <head>
-    ${helmet.title.toString()}
+    ${helmetTitle}
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-    ${helmet.meta.toString()}
-    ${vendorStyleTag}
-    ${appStyleTag}
-    <link rel="manifest" href="${assetUrl}manifest.json">
-    <link rel="shortcut icon" href="${assetUrl}favicon.ico">
-    ${helmet.link.toString()}
+    ${[helmetMeta, vendorStyleTag, appStyleTag, helmetLink]
+      .filter(s => s !== '')
+      .join('\n')}
   </head>
   <body>
     <div id='root'>${content}</div>
-    ${helmet.script.toString()}
-    ${template.renderBottom({ expressCtx })}
-    <script>window.INITIAL_STATE=${serialize(store.getState())}</script>
-    ${loadableState.getScriptTag()}
-    ${dllScript}
-    <script src='${vendor}'></script>
-    <script src='${app}'></script>
+    ${[helmetScript, template.renderBottom({ expressCtx, store })]
+      .filter(s => s !== '')
+      .join('\n')}
+    <script type="text/javascript">window.__shell__ = ${shell};</script>
+    ${[initScript, loadableState.getScriptTag(), dllScript]
+      .filter(s => s !== '')
+      .join('\n')}
+    <script type="text/javascript" src='${vendor}'></script>
+    <script type="text/javascript" src='${app}'></script>
   </body>
   </html>`;
 };
