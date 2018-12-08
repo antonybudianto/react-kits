@@ -106,14 +106,17 @@ const config = {
         swDest: 'service-worker.js',
         clientsClaim: true,
         skipWaiting: true,
-        navigateFallback: sw.homePath + '?shell',
+        navigateFallback: sw.homePath + '?rkit-shell',
         include: [/vendor.*\.js$/, /app.*\.js$/, /app.*\.css$/],
+        exclude: [/hot-update.*\.js$/],
         templatedUrls: {
-          [sw.homePath + '?shell']: 'app-shell-v' + Date.now()
+          [sw.homePath + '?rkit-shell']: 'app-shell-v' + Date.now()
         },
         runtimeCaching: [
           {
-            urlPattern: new RegExp(`${sw.homePath}`),
+            urlPattern: new RegExp(
+              `${sw.homePath.replace(/\//g, '')}\/((?!hot-update).)*$`
+            ),
             handler: 'staleWhileRevalidate',
             options: {
               cacheableResponse: {

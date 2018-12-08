@@ -40,7 +40,7 @@ test('works with minimum setup - with shell', done => {
     expressCtx: {
       req: {
         query: {
-          shell: true
+          'rkit-shell': true
         }
       },
       res: {}

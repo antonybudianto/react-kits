@@ -51,7 +51,7 @@ export default async ({
     }
   }
 
-  if (req.query.shell !== undefined) {
+  if (req.query['rkit-shell'] !== undefined) {
     return `<!doctype html>
     <html>
     <head>
