@@ -56,7 +56,14 @@ class HomeView extends Component {
           </Link>
         </div>
         <TestView />
-        <UserAgent>{ua => <div>OS: {ua.os.name}</div>}</UserAgent>
+        <UserAgent>
+          {ua => {
+            if (ua) {
+              return <div>OS: {ua.os.name}</div>
+            }
+            return null
+          }}
+        </UserAgent>
         <div>Fetch hello api: {this.state.text}</div>
       </div>
     )

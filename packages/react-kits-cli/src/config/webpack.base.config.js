@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const { log } = require('../util/log');
 const { generateKitConfig } = require('../util/config');
@@ -65,14 +65,7 @@ let config = {
     ]
   },
   optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          compress: true
-        }
-      }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
+    minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
   },
   plugins: [new webpack.DefinePlugin(project.globals)]
 };
