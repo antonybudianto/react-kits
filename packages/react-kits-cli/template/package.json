@@ -1,6 +1,6 @@
 {
   "name": "~~name~~",
-  "version": "3.0.0-alpha.3",
+  "version": "3.0.0-alpha.4",
   "description": "react ssr starter",
   "private": true,
   "scripts": {
@@ -75,7 +75,6 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "react-ua": "0.2.0",
     "axios": "0.18.0",
     "basscss": "8.0.4",
     "better-npm-run": "^0.1.1",
@@ -92,10 +91,12 @@
     "react-body-classname": "^1.2.0",
     "react-dom": "16.6.3",
     "react-helmet-async": "0.1.0",
-    "react-hot-loader": "^4.3.12",
-    "react-kits-server": "^3.0.0-alpha.3",
-    "react-redux": "5.0.7",
+    "react-kits-server": "^3.0.0-alpha.4",
     "react-router-config": "1.0.0-beta.4",
+    "react-ua": "0.2.0",
+    "ua-parser-js": "0.7.18",
+    "react-hot-loader": "^4.3.12",
+    "react-redux": "5.0.7",
     "react-router-dom": "4.3.1",
     "recompose": "0.30.0",
     "redux": "^4.0.1",
@@ -106,8 +107,8 @@
     "babel-jest": "23.6.0",
     "http-proxy-middleware": "^0.19.1",
     "jest": "23.6.0",
+    "react-kits": "^3.0.0-alpha.4",
     "prettier": "1.15.3",
-    "react-kits": "^3.0.0-alpha.3",
     "webpack-hot-middleware": "^2.24.3"
   }
 }
