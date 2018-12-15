@@ -1,4 +1,4 @@
-import loadable from 'loadable-components'
+import loadable from '@loadable/component'
 import { ABOUT_PATH } from '../../constant/url'
 
 const AboutView = loadable(() => import('./AboutView'))

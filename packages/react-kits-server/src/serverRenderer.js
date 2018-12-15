@@ -3,8 +3,8 @@ import serialize from 'serialize-javascript';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
-import { getLoadableState } from 'loadable-components/server';
 import { HelmetProvider } from 'react-helmet-async';
+import { ChunkExtractor } from '@loadable/server';
 
 import { generateAssets } from './assetUtil';
 
@@ -19,6 +19,9 @@ const cwd = process.cwd();
 function resolveCwd(name) {
   return path.resolve(cwd, name);
 }
+
+const statsFile = resolveCwd('dist/loadable-stats.json');
+const extractor = new ChunkExtractor({ statsFile, entrypoints: [] });
 
 export default async ({
   expressCtx,
@@ -69,8 +72,8 @@ export default async ({
     </HelmetProvider>
   );
 
-  const loadableState = await getLoadableState(rootEl);
-  let content = renderToString(rootEl);
+  const jsx = extractor.collectChunks(rootEl);
+  let content = renderToString(jsx);
   const { helmet } = helmetCtx;
 
   let helmetTitle = helmet.title.toString();
@@ -96,7 +99,13 @@ export default async ({
     ${helmetTitle}
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-    ${[helmetMeta, vendorStyleTag, appStyleTag, helmetLink]
+    ${[
+      helmetMeta,
+      vendorStyleTag,
+      appStyleTag,
+      extractor.getStyleTags(),
+      helmetLink
+    ]
       .filter(s => s !== '')
       .join('\n')}
   </head>
@@ -107,7 +116,7 @@ export default async ({
       initScript,
       helmetScript,
       template.renderBottom({ expressCtx, store }),
-      loadableState.getScriptTag(),
+      extractor.getScriptTags(),
       dllScript
     ]
       .filter(s => s !== '')

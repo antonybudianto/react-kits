@@ -1,7 +1,7 @@
 module.exports = {
   config: () => ({
-    sw: {
-      homePath: '/myapp/'
-    }
+    // sw: {
+    //   homePath: '/myapp/'
+    // }
   })
 }
