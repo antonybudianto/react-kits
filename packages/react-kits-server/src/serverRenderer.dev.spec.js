@@ -13,6 +13,20 @@ const existsSyncSpy = jest.spyOn(fs, 'existsSync').mockImplementation(str => {
   return existsSyncOri(str);
 });
 
+function MockExtractor() {
+  return {
+    getScriptTags: jest.fn(),
+    getStyleTags: jest.fn(),
+    collectChunks: d => d
+  };
+}
+
+jest.mock('@loadable/server', () => {
+  return {
+    ChunkExtractor: MockExtractor
+  };
+});
+
 jest.mock('./assetUtil.js', () => {
   return {
     generateAssets: jest.fn(() => ({

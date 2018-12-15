@@ -12,6 +12,20 @@ jest.mock('./assetUtil.js', () => {
 });
 const serverRenderer = require('./serverRenderer').default;
 
+function MockExtractor() {
+  return {
+    getScriptTags: jest.fn(),
+    getStyleTags: jest.fn(),
+    collectChunks: d => d
+  };
+}
+
+jest.mock('@loadable/server', () => {
+  return {
+    ChunkExtractor: MockExtractor
+  };
+});
+
 test('works with minimum setup', done => {
   serverRenderer({
     expressCtx: {
