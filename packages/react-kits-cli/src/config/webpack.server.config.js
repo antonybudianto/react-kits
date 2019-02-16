@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const merge = require('webpack-merge');
 const StartServerPlugin = require('start-server-webpack-plugin');
-const LoadablePlugin = require('@loadable/webpack-plugin');
 
 const { log } = require('../util/log');
 const { generateKitConfig } = require('../util/config');
@@ -46,8 +45,7 @@ let config = {
   output: {
     filename: '[name].js',
     path: project.paths.dist()
-  },
-  plugins: [new LoadablePlugin()]
+  }
 };
 
 if (project.globals.__DEV__) {

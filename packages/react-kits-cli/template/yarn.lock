@@ -31,10 +31,10 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@loadable/component@5.2.2":
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/@loadable/component/-/component-5.2.2.tgz#64db5fb1e93d6bc93596947336283979f055d5d2"
-  integrity sha512-trM/wBZbD1kL5CdBOD8pxbVZeKoycrb+qJs3FqKezUnzm6RTmYNYFYYDDzzapH9rc60/rPJYVXa9IP0TJF6Q6A==
+"@loadable/component@5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@loadable/component/-/component-5.6.0.tgz#28f79caeccc956205a0e38494ea26c49428461d7"
+  integrity sha512-GeVzzAiKLC+CFr/Pf7uIsbRmzDLJ9XC4rb6AM2zIns6yziOvJTjKsO31PUuIxuMwNEKwlOpUkkBarBbwb45bHA==
   dependencies:
     hoist-non-react-statics "^3.2.1"
 

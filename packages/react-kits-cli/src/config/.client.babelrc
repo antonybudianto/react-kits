@@ -10,6 +10,7 @@
     "@babel/preset-react"
   ],
   "plugins": [
+    "@loadable/babel-plugin",
     "react-hot-loader/babel",
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-proposal-class-properties"

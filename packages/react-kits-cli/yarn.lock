@@ -700,17 +700,17 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@loadable/babel-plugin@5.2.2":
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/@loadable/babel-plugin/-/babel-plugin-5.2.2.tgz#448f21ce984cee827a7bd4ce7c625c343c3b12e6"
-  integrity sha512-gTi0ZXI4s/Nwdr25PyyPQfe465eMM30AtQqMmJU2cSfB9bRHNAtKb666W3ZccgmL35LV4Px3qTo5hYC6OyGzNg==
+"@loadable/babel-plugin@5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@loadable/babel-plugin/-/babel-plugin-5.6.0.tgz#30b7713c29cbdcc64fba9ecb1bbb5a5340e30ff1"
+  integrity sha512-PiNCCF1HO1CaOgxFNpWJbPLsrl2NNVH4mOu0eovo+ADZtw4A6JayFG/OC1UaV3gmfhmogNvARJ9ZB4j0SbJbdw==
   dependencies:
     "@babel/plugin-syntax-dynamic-import" "^7.2.0"
 
-"@loadable/webpack-plugin@5.2.2":
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/@loadable/webpack-plugin/-/webpack-plugin-5.2.2.tgz#b8d43fdc2393eb334fa678d3df1e9cbc4bc5e0b8"
-  integrity sha512-P190PIPWIQwLaO4FjkM/BcNvoZmkHChrLHybVC1Av+cz7qJn1sEGejScfKAZ3kYXh/v1eVAoRprFC0Ew5Z6PDA==
+"@loadable/webpack-plugin@5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@loadable/webpack-plugin/-/webpack-plugin-5.5.0.tgz#4d44812d3cc106b6278570fa4c8ebdeb07cc3549"
+  integrity sha512-/lW1JnDfxx7z9krS26eUvzuehlKDGB+VN9Vnf6Zu9fm4acyMqymAKHSeF/4LwluFsvFhqqLInrCCJGv9ZIZx8g==
 
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"

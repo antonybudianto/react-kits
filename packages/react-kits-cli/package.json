@@ -28,8 +28,8 @@
   },
   "homepage": "https://github.com/antonybudianto/react-kits#readme",
   "dependencies": {
-    "@loadable/babel-plugin": "5.2.2",
-    "@loadable/webpack-plugin": "5.2.2",
+    "@loadable/babel-plugin": "5.6.0",
+    "@loadable/webpack-plugin": "5.5.0",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "@babel/core": "^7.2.0",
     "@babel/plugin-proposal-class-properties": "7.2.1",

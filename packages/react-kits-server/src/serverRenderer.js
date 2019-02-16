@@ -6,22 +6,12 @@ import { StaticRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ChunkExtractor } from '@loadable/server';
 
-import { generateAssets } from './assetUtil';
-
-let vendor;
-let app;
-let appStyle;
-let vendorStyle;
-
 const fs = require('fs');
 const path = require('path');
 const cwd = process.cwd();
 function resolveCwd(name) {
   return path.resolve(cwd, name);
 }
-
-const statsFile = resolveCwd('dist/loadable-stats.json');
-const extractor = new ChunkExtractor({ statsFile, entrypoints: [] });
 
 export default async ({
   expressCtx,
@@ -35,18 +25,6 @@ export default async ({
 }) => {
   const { req, res } = expressCtx;
   const reqUrl = req.url;
-  const assetData = generateAssets({ expressCtx, assetUrl });
-  vendor = assetData.vendor;
-  app = assetData.app;
-  appStyle = assetData.appStyle;
-  vendorStyle = assetData.vendorStyle;
-
-  const appStyleTag = appStyle
-    ? `<link rel='stylesheet' href='${appStyle}'>`
-    : '';
-  const vendorStyleTag = vendorStyle
-    ? `<link rel='stylesheet' href='${vendorStyle}'>`
-    : '';
   let dllScript = '';
   if (process.env.NODE_ENV === 'development') {
     if (fs.existsSync(resolveCwd('dist/vendorDll.js'))) {
@@ -72,6 +50,8 @@ export default async ({
     </HelmetProvider>
   );
 
+  const statsFile = resolveCwd('dist/loadable-stats.json');
+  const extractor = new ChunkExtractor({ statsFile, entrypoints: ['app'] });
   const jsx = extractor.collectChunks(rootEl);
   let content = renderToString(jsx);
   const { helmet } = helmetCtx;
@@ -101,8 +81,7 @@ export default async ({
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
     ${[
       helmetMeta,
-      vendorStyleTag,
-      appStyleTag,
+      extractor.getLinkTags(),
       extractor.getStyleTags(),
       helmetLink
     ]
@@ -116,13 +95,11 @@ export default async ({
       initScript,
       helmetScript,
       template.renderBottom({ expressCtx, store }),
-      extractor.getScriptTags(),
-      dllScript
+      dllScript,
+      extractor.getScriptTags()
     ]
       .filter(s => s !== '')
       .join('\n')}
-    <script type="text/javascript" src='${vendor}'></script>
-    <script type="text/javascript" src='${app}'></script>
   </body>
   </html>`;
 };

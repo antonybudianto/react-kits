@@ -6,6 +6,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
+const LoadablePlugin = require('@loadable/webpack-plugin');
 
 const { log } = require('../util/log');
 const { generateKitConfig } = require('../util/config');
@@ -127,6 +128,9 @@ const config = {
           }
         ]
       }),
+    new LoadablePlugin({
+      writeToDisk: true
+    }),
     new CopyWebpackPlugin(['public']),
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[hash].css',

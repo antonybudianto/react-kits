@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@loadable/component@5.2.2":
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/@loadable/component/-/component-5.2.2.tgz#64db5fb1e93d6bc93596947336283979f055d5d2"
-  integrity sha512-trM/wBZbD1kL5CdBOD8pxbVZeKoycrb+qJs3FqKezUnzm6RTmYNYFYYDDzzapH9rc60/rPJYVXa9IP0TJF6Q6A==
+"@loadable/component@5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@loadable/component/-/component-5.6.0.tgz#28f79caeccc956205a0e38494ea26c49428461d7"
+  integrity sha512-GeVzzAiKLC+CFr/Pf7uIsbRmzDLJ9XC4rb6AM2zIns6yziOvJTjKsO31PUuIxuMwNEKwlOpUkkBarBbwb45bHA==
   dependencies:
     hoist-non-react-statics "^3.2.1"
 
-"@loadable/server@5.2.2":
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/@loadable/server/-/server-5.2.2.tgz#39e682d13f1f682402a5e6774ed1e882a207f9f0"
-  integrity sha512-RyNfqAJLgvcZXXkvwyR572lfzZaiMwnehnlMVU9/uez45qNn82PH9j2nm58y83jHCUBZR7jh/UqAyLtLv3JhfQ==
+"@loadable/server@5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@loadable/server/-/server-5.6.0.tgz#c1a31273ef2263f39a3f049e16d6d1f00d5505a0"
+  integrity sha512-fmo1P0FKNqEagp8soR/dqd+pZlOTzY1CkQozdStn78rtdZnysYkmMW81g9gYzl+3ZZUYoZSzotGYV8t9xuPsow==
   dependencies:
     lodash "^4.17.11"
 
