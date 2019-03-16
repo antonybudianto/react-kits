@@ -4,7 +4,8 @@ import { HOME_PATH } from '../../constant/url'
 
 const AboutView = () => (
   <div>
-    About view.... <Link to={HOME_PATH}>Back to home</Link>
+    <div>About view....</div>
+    <Link to={HOME_PATH}>Back to home</Link>
   </div>
 )
 

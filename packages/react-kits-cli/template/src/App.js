@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Helmet from 'react-helmet-async'
-import { hot } from 'react-hot-loader'
+import { hot } from 'react-hot-loader/root'
 
 import renderAppRoutes from './routes'
 
@@ -18,10 +18,10 @@ class App extends Component {
           <meta property="og:description" content="React App" />
           <meta name="theme-color" content="#000000" />
         </Helmet>
-        <div>{renderAppRoutes()}</div>
+        {renderAppRoutes()}
       </div>
     )
   }
 }
 
-export default hot(module)(App)
+export default hot(App)

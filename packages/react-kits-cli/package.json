@@ -52,7 +52,7 @@
     "node-sass": "^4.10.0",
     "null-loader": "^0.1.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "react-hot-loader": "^4.3.12",
+    "react-hot-loader": "4.8.0",
     "recursive-copy": "^2.0.9",
     "sass-loader": "^7.1.0",
     "start-server-webpack-plugin": "^3.0.0-rc3",
