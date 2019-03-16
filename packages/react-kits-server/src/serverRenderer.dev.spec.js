@@ -17,6 +17,7 @@ function MockExtractor() {
   return {
     getScriptTags: jest.fn(),
     getStyleTags: jest.fn(),
+    getLinkTags: jest.fn(),
     collectChunks: d => d
   };
 }
@@ -24,17 +25,6 @@ function MockExtractor() {
 jest.mock('@loadable/server', () => {
   return {
     ChunkExtractor: MockExtractor
-  };
-});
-
-jest.mock('./assetUtil.js', () => {
-  return {
-    generateAssets: jest.fn(() => ({
-      vendor: 'vendortmp.js',
-      app: 'apptmp.js',
-      appStyle: 'apptmp.css',
-      vendorStyle: 'vendortmp.css'
-    }))
   };
 });
 
