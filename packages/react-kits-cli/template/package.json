@@ -14,6 +14,7 @@
     "build:staging": "bnr build:staging",
     "build:prod": "bnr build:prod",
     "serve": "bnr serve",
+    "serve:lerna": "bnr serve:lerna",
     "prettier": "prettier --write \"src/**/*.js\""
   },
   "betterScripts": {
@@ -27,6 +28,13 @@
     },
     "serve": {
       "command": "node dist/bundle.js",
+      "env": {
+        "NODE_ENV": "production",
+        "APP_ENV": "production"
+      }
+    },
+    "serve:lerna": {
+      "command": "node --preserve-symlinks dist/bundle.js",
       "env": {
         "NODE_ENV": "production",
         "APP_ENV": "production"

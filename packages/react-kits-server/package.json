@@ -26,6 +26,13 @@
     "url": "https://github.com/antonybudianto/react-kits-server/issues"
   },
   "homepage": "https://github.com/antonybudianto/react-kits-server#readme",
+  "jest": {
+    "moduleDirectories": [
+      "src",
+      "node_modules",
+      "../react-kits-cli/template/node_modules"
+    ]
+  },
   "peerDependencies": {
     "react": "*",
     "react-dom": "*",
@@ -33,7 +40,7 @@
     "react-kits": "*",
     "react-router-dom": "*",
     "redux": "*",
-    "@loadable/component": "5.6.0"
+    "@loadable/component": "*"
   },
   "dependencies": {
     "express": "^4.16.3",
@@ -43,10 +50,6 @@
     "serialize-javascript": "^1.5.0"
   },
   "devDependencies": {
-    "microbundle": "^0.6.0",
-    "react-helmet-async": "0.1.0",
-    "react-kits": "^3.0.0-alpha.5",
-    "redux": "*",
-    "@loadable/component": "5.6.0"
+    "microbundle": "0.6.0"
   }
 }

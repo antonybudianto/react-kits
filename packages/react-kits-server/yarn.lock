@@ -2,13 +2,6 @@
 # yarn lockfile v1
 
 
-"@loadable/component@5.6.0":
-  version "5.6.0"
-  resolved "https://registry.yarnpkg.com/@loadable/component/-/component-5.6.0.tgz#28f79caeccc956205a0e38494ea26c49428461d7"
-  integrity sha512-GeVzzAiKLC+CFr/Pf7uIsbRmzDLJ9XC4rb6AM2zIns6yziOvJTjKsO31PUuIxuMwNEKwlOpUkkBarBbwb45bHA==
-  dependencies:
-    hoist-non-react-statics "^3.2.1"
-
 "@loadable/server@5.6.0":
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/@loadable/server/-/server-5.6.0.tgz#c1a31273ef2263f39a3f049e16d6d1f00d5505a0"
@@ -467,10 +460,6 @@ decamelize@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
 
-deep-equal@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.0.1.tgz#f5d260292b660e084eff4cdbc9f08ad3247448b5"
-
 defined@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/defined/-/defined-1.0.0.tgz#c98d9bcef75674188e110969151199e39b1fa693"
@@ -759,13 +748,6 @@ hoist-non-react-statics@^2.5.0:
   version "2.5.5"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
 
-hoist-non-react-statics@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.2.1.tgz#c09c0555c84b38a7ede6912b61efddafd6e75e1e"
-  integrity sha512-TFsu3TV3YLY+zFTZDrN8L2DTFanObwmBLpWvJs1qfUuEQ5bTAdFcwfx2T/bsCXfM9QHSLvjfP+nihEl0yvozxw==
-  dependencies:
-    react-is "^16.3.2"
-
 html-comment-regex@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/html-comment-regex/-/html-comment-regex-1.1.1.tgz#668b93776eaae55ebde8f3ad464b307a4963625e"
@@ -816,7 +798,7 @@ inherits@2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
 
-invariant@^2.0.0, invariant@^2.2.4:
+invariant@^2.0.0:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   dependencies:
@@ -1050,7 +1032,7 @@ methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
 
-microbundle@^0.6.0:
+microbundle@0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/microbundle/-/microbundle-0.6.0.tgz#0e1c4a055b90c500d031f28ff518a209bdb93898"
   integrity sha512-Ls4UkBQc5WvTu0+hMPyvTz43zIaWQRowuN+UzvFtiD4ccucuUhuQMmjczF7tXL04LGS6HEjzM1j8LPqIw80aVg==
@@ -1587,7 +1569,7 @@ promise.series@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/promise.series/-/promise.series-0.2.0.tgz#2cc7ebe959fc3a6619c04ab4dbdc9e452d864bbd"
 
-prop-types@^15.6.0, prop-types@^15.6.1:
+prop-types@^15.6.0:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   dependencies:
@@ -1641,21 +1623,6 @@ raw-body@2.3.2:
     iconv-lite "0.4.19"
     unpipe "1.0.0"
 
-react-helmet-async@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/react-helmet-async/-/react-helmet-async-0.1.0.tgz#d5fa350b74cf8b690c401dfe74d55ffd9fdd9119"
-  integrity sha512-hnSOFBDRllV9O6K5u9JSsLbDn5ZpO08aFr08sftHTAbC+oqCq+/fWUtixPlgtVlHxVRbIk2G8qDL8DHR+0+ZaQ==
-  dependencies:
-    deep-equal "^1.0.1"
-    invariant "^2.2.4"
-    prop-types "^15.6.1"
-    shallowequal "^1.0.2"
-
-react-is@^16.3.2:
-  version "16.6.3"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.6.3.tgz#d2d7462fcfcbe6ec0da56ad69047e47e56e7eac0"
-  integrity sha512-u7FDWtthB4rWibG/+mFbVd5FvdI20yde86qKGx4lVUTWmPlSWQ4QxbBIrrs+HnXGbxOUlUzTAP/VDmvCwaP2yA==
-
 react-redux@^5.0.7:
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
@@ -1680,13 +1647,6 @@ reduce-function-call@^1.0.1:
   resolved "https://registry.yarnpkg.com/reduce-function-call/-/reduce-function-call-1.0.2.tgz#5a200bf92e0e37751752fe45b0ab330fd4b6be99"
   dependencies:
     balanced-match "^0.4.2"
-
-redux@*:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.0.tgz#aa698a92b729315d22b34a0553d7e6533555cc03"
-  dependencies:
-    loose-envify "^1.1.0"
-    symbol-observable "^1.2.0"
 
 regenerate@^1.2.1:
   version "1.4.0"
@@ -1937,10 +1897,6 @@ setprototypeof@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.0.tgz#d0bd85536887b6fe7c0d818cb962d9d91c54e656"
 
-shallowequal@^1.0.2:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
-
 sort-keys@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/sort-keys/-/sort-keys-1.1.2.tgz#441b6d4d346798f1b4e49e8920adfba0e543f9ad"
@@ -2012,10 +1968,6 @@ svgo@^0.7.0:
     mkdirp "~0.5.1"
     sax "~1.2.1"
     whet.extend "~0.9.9"
-
-symbol-observable@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
 
 tiny-glob@^0.2.0:
   version "0.2.2"
