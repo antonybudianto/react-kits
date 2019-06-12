@@ -2,15 +2,22 @@ import React from 'react';
 
 process.env.NODE_ENV = 'production';
 
-jest.mock('./assetUtil.js', () => {
+const serverRenderer = require('./serverRenderer').default;
+
+function MockExtractor() {
   return {
-    generateAssets: jest.fn(() => ({
-      vendor: 'vendortmp.js',
-      app: 'apptmp.js'
-    }))
+    getScriptTags: jest.fn(),
+    getStyleTags: jest.fn(),
+    getLinkTags: jest.fn(),
+    collectChunks: d => d
+  };
+}
+
+jest.mock('@loadable/server', () => {
+  return {
+    ChunkExtractor: MockExtractor
   };
 });
-const serverRenderer = require('./serverRenderer').default;
 
 test('works with minimum setup', done => {
   serverRenderer({
@@ -29,8 +36,6 @@ test('works with minimum setup', done => {
     onRender: () => <div>test123</div>
   }).then(str => {
     expect(str).toMatch(/test123/);
-    expect(str).toMatch(/apptmp\.js/);
-    expect(str).toMatch(/vendortmp\.js/);
     done();
   });
 });
@@ -54,8 +59,6 @@ test('works with minimum setup - with shell', done => {
     onRender: () => <div>test123</div>
   }).then(str => {
     expect(str).toMatch(/window\.__shell__ = true/);
-    expect(str).toMatch(/apptmp\.js/);
-    expect(str).toMatch(/vendortmp\.js/);
     done();
   });
 });

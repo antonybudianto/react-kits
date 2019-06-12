@@ -53,6 +53,7 @@ if (project.globals.__DEV__) {
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new StartServerPlugin({
+        nodeArgs: ['--preserve-symlinks'],
         entryName: 'bundle'
       })
     ]

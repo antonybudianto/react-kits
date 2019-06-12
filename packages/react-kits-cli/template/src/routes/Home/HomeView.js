@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
@@ -8,6 +9,7 @@ import { toggleLogin } from '../../reducers/user'
 import './HomeView.scss'
 import TestView from './TestView'
 import { ABOUT_PATH } from '../../constant/url'
+import HomeHook from './HomeHook';
 
 class HomeView extends Component {
   static propTypes = {
@@ -65,6 +67,7 @@ class HomeView extends Component {
           }}
         </UserAgent>
         <div>Fetch hello api: {this.state.text}</div>
+        <HomeHook />
       </div>
     )
   }
