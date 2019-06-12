@@ -1,6 +1,6 @@
 {
   "name": "~~name~~",
-  "version": "3.0.0-alpha.5",
+  "version": "4.0.0-alpha.0",
   "description": "react ssr starter",
   "private": true,
   "scripts": {
@@ -83,12 +83,12 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
+    "@loadable/component": "5.6.0",
     "axios": "0.18.0",
     "basscss": "8.0.4",
     "better-npm-run": "^0.1.1",
     "classnames": "^2.2.6",
     "dotenv": "6.2.0",
-    "@loadable/component": "5.6.0",
     "lodash": "4.17.11",
     "lodash-es": "4.17.11",
     "npm-run-all": "4.1.5",
@@ -100,7 +100,7 @@
     "react-dom": "16.8.6",
     "react-helmet-async": "0.1.0",
     "react-hot-loader": "^4.8.0",
-    "react-kits-server": "^3.0.0-alpha.5",
+    "react-kits-server": "^4.0.0-alpha.0",
     "react-redux": "5.0.7",
     "react-router-config": "5.0.1",
     "react-router-dom": "5.0.1",
@@ -116,7 +116,7 @@
     "http-proxy-middleware": "^0.19.1",
     "jest": "23.6.0",
     "prettier": "1.15.3",
-    "react-kits": "^3.0.0-alpha.5",
+    "react-kits": "^4.0.0-alpha.0",
     "webpack-hot-middleware": "^2.24.3"
   }
 }
